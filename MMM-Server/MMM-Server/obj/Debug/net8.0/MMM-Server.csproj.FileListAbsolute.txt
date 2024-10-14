@@ -31,3 +31,16 @@ C:\Users\lab2a\Documents\Visual Studio 2022\Projects\MPAI-MMM\MMM-Server\MMM-Ser
 C:\Users\lab2a\Documents\Visual Studio 2022\Projects\MPAI-MMM\MMM-Server\MMM-Server\MMM-Server\obj\Debug\net8.0\MMM-Server.pdb
 C:\Users\lab2a\Documents\Visual Studio 2022\Projects\MPAI-MMM\MMM-Server\MMM-Server\MMM-Server\obj\Debug\net8.0\MMM-Server.genruntimeconfig.cache
 C:\Users\lab2a\Documents\Visual Studio 2022\Projects\MPAI-MMM\MMM-Server\MMM-Server\MMM-Server\obj\Debug\net8.0\ref\MMM-Server.dll
+C:\Users\lab2a\Documents\Visual Studio 2022\Projects\MPAI-MMM\MMM-Server\MMM-Server\MMM-Server\bin\Debug\net8.0\AWSSDK.Core.dll
+C:\Users\lab2a\Documents\Visual Studio 2022\Projects\MPAI-MMM\MMM-Server\MMM-Server\MMM-Server\bin\Debug\net8.0\AWSSDK.SecurityToken.dll
+C:\Users\lab2a\Documents\Visual Studio 2022\Projects\MPAI-MMM\MMM-Server\MMM-Server\MMM-Server\bin\Debug\net8.0\DnsClient.dll
+C:\Users\lab2a\Documents\Visual Studio 2022\Projects\MPAI-MMM\MMM-Server\MMM-Server\MMM-Server\bin\Debug\net8.0\MongoDB.Bson.dll
+C:\Users\lab2a\Documents\Visual Studio 2022\Projects\MPAI-MMM\MMM-Server\MMM-Server\MMM-Server\bin\Debug\net8.0\MongoDB.Driver.dll
+C:\Users\lab2a\Documents\Visual Studio 2022\Projects\MPAI-MMM\MMM-Server\MMM-Server\MMM-Server\bin\Debug\net8.0\MongoDB.Driver.Core.dll
+C:\Users\lab2a\Documents\Visual Studio 2022\Projects\MPAI-MMM\MMM-Server\MMM-Server\MMM-Server\bin\Debug\net8.0\MongoDB.Libmongocrypt.dll
+C:\Users\lab2a\Documents\Visual Studio 2022\Projects\MPAI-MMM\MMM-Server\MMM-Server\MMM-Server\bin\Debug\net8.0\SharpCompress.dll
+C:\Users\lab2a\Documents\Visual Studio 2022\Projects\MPAI-MMM\MMM-Server\MMM-Server\MMM-Server\bin\Debug\net8.0\Snappier.dll
+C:\Users\lab2a\Documents\Visual Studio 2022\Projects\MPAI-MMM\MMM-Server\MMM-Server\MMM-Server\bin\Debug\net8.0\ZstdSharp.dll
+C:\Users\lab2a\Documents\Visual Studio 2022\Projects\MPAI-MMM\MMM-Server\MMM-Server\MMM-Server\bin\Debug\net8.0\runtimes\linux\native\libmongocrypt.so
+C:\Users\lab2a\Documents\Visual Studio 2022\Projects\MPAI-MMM\MMM-Server\MMM-Server\MMM-Server\bin\Debug\net8.0\runtimes\osx\native\libmongocrypt.dylib
+C:\Users\lab2a\Documents\Visual Studio 2022\Projects\MPAI-MMM\MMM-Server\MMM-Server\MMM-Server\bin\Debug\net8.0\runtimes\win\native\mongocrypt.dll

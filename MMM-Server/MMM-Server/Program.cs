@@ -1,6 +1,11 @@
+using MMM_Server.Models;
+using MMM_Server.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.Configure<MMMDatabaseSettings>(builder.Configuration.GetSection("ProfileDatabase"));
+builder.Services.AddSingleton<ProfileService>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
