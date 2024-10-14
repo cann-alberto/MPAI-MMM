@@ -22,5 +22,17 @@ public class ProfileService
 
     public async Task<List<Profile>> GetAsync() =>
         await _profilesCollection.Find(_ => true).ToListAsync();
+    
+    public async Task<Profile?> GetAsync(string id) =>
+        await _profilesCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
+
+    public async Task CreateAsync(Profile newBook) =>
+        await _profilesCollection.InsertOneAsync(newBook);
+
+    public async Task UpdateAsync(string id, Profile updatedBook) =>
+        await _profilesCollection.ReplaceOneAsync(x => x.Id == id, updatedBook);
+
+    public async Task RemoveAsync(string id) =>
+        await _profilesCollection.DeleteOneAsync(x => x.Id == id);
 
 }
