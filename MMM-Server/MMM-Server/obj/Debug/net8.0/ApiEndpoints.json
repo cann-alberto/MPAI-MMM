@@ -2,7 +2,7 @@
   {
     "ContainingType": "MMM_Server.Controllers.RegistrationController",
     "Method": "Get",
-    "RelativePath": "api/Registration/profiles",
+    "RelativePath": "api/Registration",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -22,6 +22,38 @@
   {
     "ContainingType": "MMM_Server.Controllers.RegistrationController",
     "Method": "Post",
+    "RelativePath": "api/Registration/devices",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newDevice",
+        "Type": "MMM_Server.Models.Device",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MMM_Server.Controllers.RegistrationController",
+    "Method": "Post",
+    "RelativePath": "api/Registration/personae",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newPersona",
+        "Type": "MMM_Server.Models.Persona",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MMM_Server.Controllers.RegistrationController",
+    "Method": "Post",
     "RelativePath": "api/Registration/profiles",
     "HttpMethod": "POST",
     "IsController": true,
@@ -30,6 +62,22 @@
       {
         "Name": "newPersonalProfile",
         "Type": "MMM_Server.Models.PersonalProfile",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MMM_Server.Controllers.RegistrationController",
+    "Method": "Post",
+    "RelativePath": "api/Registration/users",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newUser",
+        "Type": "MMM_Server.Models.User",
         "IsRequired": true
       }
     ],
