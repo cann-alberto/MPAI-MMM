@@ -4,6 +4,16 @@ using MongoDB.Driver;
 
 namespace MMM_Server.Services;
 
+public class PersonalProfileService : MongoDbService<PersonalProfile>
+{
+    public PersonalProfileService(IOptions<MMMDatabaseSettings> profileDatabaseSettings)
+        : base(profileDatabaseSettings, profileDatabaseSettings.Value.ProfilesCollectionName)
+    {
+
+    }
+}
+
+/*
 public class PersonalProfileService
 {
     private readonly IMongoCollection<PersonalProfile> _profilesCollection;
@@ -26,17 +36,15 @@ public class PersonalProfileService
     public async Task CreateAsync(PersonalProfile newProfile) =>
         await _profilesCollection.InsertOneAsync(newProfile);
 
-    /*
-    public async Task<PersonalProfileData?> GetAsync(string id) =>
-        await _profilesCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
+    
+    //public async Task<PersonalProfileData?> GetAsync(string id) =>
+    //    await _profilesCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
 
+    //public async Task UpdateAsync(string id, PersonalProfileData updatedProfile) =>
+    //    await _profilesCollection.ReplaceOneAsync(x => x.Id == id, updatedProfile);
+
+    //public async Task RemoveAsync(string id) =>
+    //    await _profilesCollection.DeleteOneAsync(x => x.Id == id);
     
 
-    public async Task UpdateAsync(string id, PersonalProfileData updatedProfile) =>
-        await _profilesCollection.ReplaceOneAsync(x => x.Id == id, updatedProfile);
-
-    public async Task RemoveAsync(string id) =>
-        await _profilesCollection.DeleteOneAsync(x => x.Id == id);
-    */
-
-}
+}*/
