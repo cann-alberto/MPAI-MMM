@@ -23,7 +23,7 @@ public class RegistrationController : ControllerBase
         _devicesService = devicesService;
     }
 
-    [HttpGet]
+    [HttpGet("profiles")]
     public async Task<List<PersonalProfile>> Get() =>
         await _personalProfilesService.GetAsync();
 
