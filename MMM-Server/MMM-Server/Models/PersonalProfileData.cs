@@ -4,12 +4,8 @@ using MongoDB.Bson.Serialization.Attributes;
 namespace MMM_Server.Models;
 
 
-public class Profile
+public class PersonalProfileData
 {
-    [BsonId]
-    [BsonRepresentation(BsonType.ObjectId)]
-    public string? Id { get; set; }
-
     public string FirstName { get; set; } = null!;
 
     public string LastName { get; set; } = null!;

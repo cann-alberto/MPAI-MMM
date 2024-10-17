@@ -4,10 +4,10 @@ using MongoDB.Driver;
 
 namespace MMM_Server.Services;
 
-public class ProfileService
+public class PersonalProfileService
 {
-    private readonly IMongoCollection<Profile> _profilesCollection;
-    public ProfileService(
+    private readonly IMongoCollection<PersonalProfile> _profilesCollection;
+    public PersonalProfileService(
         IOptions<MMMDatabaseSettings> profileDatabaseSettings)
     {
         var mongoClient = new MongoClient(
@@ -16,23 +16,27 @@ public class ProfileService
         var mongoDatabase = mongoClient.GetDatabase(
             profileDatabaseSettings.Value.DatabaseName);
 
-        _profilesCollection = mongoDatabase.GetCollection<Profile>(
+        _profilesCollection = mongoDatabase.GetCollection<PersonalProfile>(
             profileDatabaseSettings.Value.ProfilesCollectionName);
     }
 
-    public async Task<List<Profile>> GetAsync() =>
+    public async Task<List<PersonalProfile>> GetAsync() =>
         await _profilesCollection.Find(_ => true).ToListAsync();
-    
-    public async Task<Profile?> GetAsync(string id) =>
+
+    public async Task CreateAsync(PersonalProfile newProfile) =>
+        await _profilesCollection.InsertOneAsync(newProfile);
+
+    /*
+    public async Task<PersonalProfileData?> GetAsync(string id) =>
         await _profilesCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
 
-    public async Task CreateAsync(Profile newBook) =>
-        await _profilesCollection.InsertOneAsync(newBook);
+    
 
-    public async Task UpdateAsync(string id, Profile updatedBook) =>
-        await _profilesCollection.ReplaceOneAsync(x => x.Id == id, updatedBook);
+    public async Task UpdateAsync(string id, PersonalProfileData updatedProfile) =>
+        await _profilesCollection.ReplaceOneAsync(x => x.Id == id, updatedProfile);
 
     public async Task RemoveAsync(string id) =>
         await _profilesCollection.DeleteOneAsync(x => x.Id == id);
+    */
 
 }

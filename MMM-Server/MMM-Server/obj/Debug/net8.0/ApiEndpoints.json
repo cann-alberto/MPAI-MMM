@@ -1,25 +1,5 @@
 [
   {
-    "ContainingType": "MMM_Server.Controllers.ProfilesController",
-    "Method": "Get",
-    "RelativePath": "api/Profiles",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": [
-      {
-        "Type": "System.Collections.Generic.List\u00601[[MMM_Server.Models.Profile, MMM-Server, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
     "ContainingType": "MMM_Server.Controllers.RegistrationController",
     "Method": "Get",
     "RelativePath": "api/Registration/profiles",
@@ -29,7 +9,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.List\u00601[[MMM_Server.Models.Profile, MMM-Server, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.List\u00601[[MMM_Server.Models.PersonalProfile, MMM-Server, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -48,71 +28,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "newProfile",
-        "Type": "MMM_Server.Models.Profile",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "MMM_Server.Controllers.RegistrationController",
-    "Method": "Get",
-    "RelativePath": "api/Registration/profiles/{id}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.String",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "MMM_Server.Models.Profile",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "MMM_Server.Controllers.RegistrationController",
-    "Method": "Update",
-    "RelativePath": "api/Registration/profiles/{id}",
-    "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.String",
-        "IsRequired": true
-      },
-      {
-        "Name": "updatedProfile",
-        "Type": "MMM_Server.Models.Profile",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "MMM_Server.Controllers.RegistrationController",
-    "Method": "Delete",
-    "RelativePath": "api/Registration/profiles/{id}",
-    "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.String",
+        "Name": "newPersonalProfile",
+        "Type": "MMM_Server.Models.PersonalProfile",
         "IsRequired": true
       }
     ],

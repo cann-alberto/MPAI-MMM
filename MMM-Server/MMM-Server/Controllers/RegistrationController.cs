@@ -1,6 +1,7 @@
 ﻿using MMM_Server.Models;
 using MMM_Server.Services;
 using Microsoft.AspNetCore.Mvc;
+using MMM_Server.Models.Utils;
 
 namespace MMM_Server.Controllers;
 
@@ -9,68 +10,22 @@ namespace MMM_Server.Controllers;
 public class RegistrationController : ControllerBase
 {
     
-    private readonly ProfileService _profilesService;
+    private readonly PersonalProfileService _personalProfilesService;
     
-    public RegistrationController(ProfileService profilesService) =>
-        _profilesService = profilesService;
+    public RegistrationController(PersonalProfileService profilesService) =>
+        _personalProfilesService = profilesService;
 
     [HttpGet]
-    public async Task<List<Profile>> Get() =>
-        await _profilesService.GetAsync();
-
-    [HttpGet("{id:length(24)}")]
-    public async Task<ActionResult<Profile>> Get(string id)
-    {
-        var book = await _profilesService.GetAsync(id);
-
-        if (book is null)
-        {
-            return NotFound();
-        }
-
-        return book;
-    }
+    public async Task<List<PersonalProfile>> Get() =>
+        await _personalProfilesService.GetAsync();
 
     [HttpPost]
-    public async Task<IActionResult> Post(Profile newProfile)
+    public async Task<IActionResult> Post(PersonalProfile newPersonalProfile)
     {
-        await _profilesService.CreateAsync(newProfile);
+        await _personalProfilesService.CreateAsync(newPersonalProfile);
 
-        return CreatedAtAction(nameof(Get), new { id = newProfile.Id }, newProfile);
+        return CreatedAtAction(nameof(Get), new { id = newPersonalProfile.Id }, newPersonalProfile);
     }
-
-    [HttpPut("{id:length(24)}")]
-    public async Task<IActionResult> Update(string id, Profile updatedProfile)
-    {
-        var profile = await _profilesService.GetAsync(id);
-
-        if (profile is null)
-        {
-            return NotFound();
-        }
-
-        updatedProfile.Id = profile.Id;
-
-        await _profilesService.UpdateAsync(id, updatedProfile);
-
-        return NoContent();
-    }
-
-    [HttpDelete("{id:length(24)}")]
-    public async Task<IActionResult> Delete(string id)
-    {
-        var profile = await _profilesService.GetAsync(id);
-
-        if (profile is null)
-        {
-            return NotFound();
-        }
-
-        await _profilesService.RemoveAsync(id);
-
-        return NoContent();
-    }
-
 }
 
 
