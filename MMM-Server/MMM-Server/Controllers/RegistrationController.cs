@@ -60,8 +60,3 @@ public class RegistrationController : ControllerBase
     }
 
 }
-
-
-
-
-
