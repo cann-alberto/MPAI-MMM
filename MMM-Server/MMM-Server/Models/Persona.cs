@@ -7,7 +7,7 @@ namespace MMM_Server.Models
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
-        public string? Id { get; set; }
+        public string? PersonaID { get; set; }
 
         public string Model { get; set; } = null!;
     }

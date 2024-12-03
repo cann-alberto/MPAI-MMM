@@ -1,6 +1,9 @@
-﻿namespace MMM_Server.Controllers
+﻿namespace MMM_Server.Controllers;
+
+public class AuthorController
 {
-    public class AuthorController
-    {
-    }
+
 }
+
+
+

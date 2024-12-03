@@ -11,6 +11,7 @@
         public string UsersCollectionName { get; set; } = null!;
         public string PersonaeCollectionName { get; set; } = null!;
         public string DevicesCollectionName { get; set; } = null!;
+        public string AccountsCollectionName { get; set; } = null!;
 
 
     }

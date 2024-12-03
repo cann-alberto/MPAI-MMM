@@ -9,6 +9,7 @@ builder.Services.AddSingleton<PersonalProfileService>();
 builder.Services.AddSingleton<UserService>();
 builder.Services.AddSingleton<DeviceService>();
 builder.Services.AddSingleton<PersonaService>();
+builder.Services.AddSingleton<AccountService>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

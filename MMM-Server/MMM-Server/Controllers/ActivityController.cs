@@ -4,10 +4,23 @@ using MMM_Server.Services;
 
 namespace MMM_Server.Controllers;
 
-public class ActivityController
+[ApiController]
+[Route("api/[controller]")]
+public class ActivityController: ControllerBase
 {
-}
+    private readonly UserService _usersService;
 
+    public ActivityController(UserService usersService)
+    {
+        _usersService = usersService;
+
+    }
+
+    [HttpGet("profiles")]
+    public async Task<List<User>> Get() =>
+        await _usersService.GetAsync();
+
+}
 
 
 
