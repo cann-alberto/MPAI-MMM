@@ -10,11 +10,21 @@ builder.Services.AddSingleton<UserService>();
 builder.Services.AddSingleton<DeviceService>();
 builder.Services.AddSingleton<PersonaService>();
 builder.Services.AddSingleton<AccountService>();
+builder.Services.AddSingleton<ActionService>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+//builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(options =>
+{
+    options.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
+    {
+        Title = "MMM Services Web Server",
+        Version = "v1",
+        Description = "API documentation for MMM Services Web Server" // Optional: Add a description
+    });
+});
 
 var app = builder.Build();
 

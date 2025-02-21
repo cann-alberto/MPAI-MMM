@@ -61,8 +61,34 @@ public class AccountService : MongoDbService<Account>
         }
     }
 
+    public async Task UpdateAsync(string id, Account updatedItem)
+    {
+        // Filter to find the account by its AccountID
+        var filter = Builders<Account>.Filter.Eq(account => account.AccountID, id);
+
+        // Find the account
+        var account = await _collection.Find(filter).FirstOrDefaultAsync();
+        if (account == null)
+        {
+            throw new Exception($"Account with ID {id} not found.");
+        }
+
+        // Update the Account
+        var result = await _collection.ReplaceOneAsync(filter, updatedItem);                
+        // Throw exception if the update fails
+        if (result.MatchedCount == 0)
+        {
+            throw new Exception($"Failed to update the account with ID {id}.");
+        }
+    }
+
+
+    public async Task<Account> GetByHumanIdAsync(string humanId)
+    {
+        // Build the filter to query the database for the HumanID
+        var filter = Builders<Account>.Filter.Eq(account => account.HumanID, humanId);
+
+        // Fetch the first matching account or return null if not found
+        return await _collection.Find(filter).FirstOrDefaultAsync();
+    }
 }
-
-
-
-

@@ -39,13 +39,7 @@ public class RegistrationController : ControllerBase
     {
         // Insert the new profile in the DB
         await _personalProfilesService.CreateAsync(newPersonalProfile);
-
-        
-        
-
-        // Insert the new account in the DB
-        //await _accountsService.CreateAsync(newAccount);
-
+                
         return CreatedAtAction(nameof(Get), new { id = newPersonalProfile.PersonalProfileID }, newPersonalProfile);
     }
 
@@ -73,6 +67,30 @@ public class RegistrationController : ControllerBase
         return CreatedAtAction(nameof(Get), new { id = newDevice.Id }, newDevice);
     }
 
+    [HttpGet("accounts/{humanId}")]
+    public async Task<IActionResult> GetAccountByHumanId(string humanId)
+    {
+        try
+        {
+            // Call the service method to retrieve the account
+            var account = await _accountsService.GetByHumanIdAsync(humanId);
+
+            if (account == null)
+            {
+                // If no account is found, return a NotFound status
+                return NotFound($"Account with HumanID {humanId} not found.");
+            }
+
+            // Return the account details
+            return Ok(account);
+        }
+        catch (Exception ex)
+        {
+            // Handle any potential exceptions
+            return BadRequest($"An error occurred while retrieving the account: {ex.Message}");
+        }
+    }
+
     [HttpPost("accounts")]
     public async Task<IActionResult> Post(Account newAccount)
     {
@@ -81,7 +99,6 @@ public class RegistrationController : ControllerBase
         return CreatedAtAction(nameof(Get), new { id = newAccount.AccountID }, newAccount);
     }
 
-    // Parameterized GET endpoint for avatars
     [HttpGet("avatars/{name}")]
     public IActionResult GetAvatar(string name, [FromQuery] string format = "glb")
     {
@@ -158,6 +175,24 @@ public class RegistrationController : ControllerBase
         {
             // Return a bad request with the error message if something fails
             return BadRequest($"An error occurred while updating the persona for account {accountId}: {ex.Message}");
+        }
+    }
+
+    [HttpPut("accounts/{accountId}")]
+    public async Task<IActionResult> UpdateAccount(string accountId, Account updatedAccount)
+    {
+        try
+        {
+            // Call the AccountService to update the persona in the account
+            await _accountsService.UpdateAsync(accountId, updatedAccount);
+
+            // Return a success response
+            return Ok($"Account with ID {updatedAccount.AccountID} was successfully updated");
+        }
+        catch (Exception ex)
+        {
+            // Return a bad request with the error message if something fails
+            return BadRequest($"An error occurred while updating the account {accountId}: {ex.Message}");
         }
     }
 }

@@ -1,8 +1,64 @@
 [
   {
     "ContainingType": "MMM_Server.Controllers.ActivityController",
+    "Method": "GetActions",
+    "RelativePath": "api/Activity/actions",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[MMM_Server.Models.ActionRequest, MMM-Server, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MMM_Server.Controllers.ActivityController",
+    "Method": "Post",
+    "RelativePath": "api/Activity/actions",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newAction",
+        "Type": "MMM_Server.Models.ActionRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MMM_Server.Controllers.ActivityController",
     "Method": "Get",
-    "RelativePath": "api/Activity/profiles",
+    "RelativePath": "api/Activity/users",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[MMM_Server.Models.User, MMM-Server, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MMM_Server.Controllers.AuthorController",
+    "Method": "Get",
+    "RelativePath": "api/Author/users",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -37,6 +93,27 @@
   },
   {
     "ContainingType": "MMM_Server.Controllers.RegistrationController",
+    "Method": "UpdateAccount",
+    "RelativePath": "api/Registration/accounts/{accountId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "accountId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "updatedAccount",
+        "Type": "MMM_Server.Models.Account",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MMM_Server.Controllers.RegistrationController",
     "Method": "UpdatePersonaForAccount",
     "RelativePath": "api/Registration/accounts/{accountId}/persona",
     "HttpMethod": "PUT",
@@ -51,6 +128,22 @@
       {
         "Name": "updatedPersona",
         "Type": "MMM_Server.Models.Persona",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MMM_Server.Controllers.RegistrationController",
+    "Method": "GetAccountByHumanId",
+    "RelativePath": "api/Registration/accounts/{humanId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "humanId",
+        "Type": "System.String",
         "IsRequired": true
       }
     ],
