@@ -2,7 +2,7 @@
   {
     "ContainingType": "MMM_Server.Controllers.ActivityController",
     "Method": "GetActions",
-    "RelativePath": "api/Activity/actions",
+    "RelativePath": "api/Activity/logins",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -22,7 +22,7 @@
   {
     "ContainingType": "MMM_Server.Controllers.ActivityController",
     "Method": "Post",
-    "RelativePath": "api/Activity/actions",
+    "RelativePath": "api/Activity/logins",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -66,6 +66,78 @@
     "ReturnTypes": [
       {
         "Type": "System.Collections.Generic.List\u00601[[MMM_Server.Models.User, MMM-Server, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MMM_Server.Controllers.CommunicationController",
+    "Method": "Get",
+    "RelativePath": "api/Communication/messages",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[MMM_Server.Models.Message, MMM-Server, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MMM_Server.Controllers.CommunicationController",
+    "Method": "Post",
+    "RelativePath": "api/Communication/messages",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newMessage",
+        "Type": "MMM_Server.Models.Message",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MMM_Server.Controllers.LocationController",
+    "Method": "Post",
+    "RelativePath": "api/Location/action-request",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newActionRequest",
+        "Type": "MMM_Server.Models.ActionRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MMM_Server.Controllers.LocationController",
+    "Method": "Get",
+    "RelativePath": "api/Location/action-requests",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[MMM_Server.Models.ActionRequest, MMM-Server, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -253,5 +325,41 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MMM_Server.Controllers.TransactController",
+    "Method": "Post",
+    "RelativePath": "api/Transact/transaction",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newTransaction",
+        "Type": "MMM_Server.Models.Transaction",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MMM_Server.Controllers.TransactController",
+    "Method": "Get",
+    "RelativePath": "api/Transact/transactions",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[MMM_Server.Models.Transaction, MMM-Server, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   }
 ]

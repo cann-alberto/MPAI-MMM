@@ -9,9 +9,9 @@ namespace MMM_Server.Controllers;
 public class ActivityController: ControllerBase
 {
     private readonly UserService _usersService;
-    private readonly ActionService _actionsService;
+    private readonly ActionRequestService _actionsService;
 
-    public ActivityController(UserService usersService, ActionService actionService)
+    public ActivityController(UserService usersService, ActionRequestService actionService)
     {
         _usersService = usersService;
         _actionsService = actionService;
@@ -21,11 +21,11 @@ public class ActivityController: ControllerBase
     public async Task<List<User>> Get() =>
         await _usersService.GetAsync();
 
-    [HttpGet("actions")]
+    [HttpGet("logins")]
     public async Task<List<ActionRequest>> GetActions() =>
         await _actionsService.GetAsync();
 
-    [HttpPost("actions")]
+    [HttpPost("logins")]
     public async Task<IActionResult> Post(ActionRequest newAction)
     {
         await _actionsService.CreateAsync(newAction);

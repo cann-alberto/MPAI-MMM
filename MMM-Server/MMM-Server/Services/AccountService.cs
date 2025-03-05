@@ -19,7 +19,6 @@ public class AccountService : MongoDbService<Account>
         // Add custom logic if needed
         return await _collection.Find(x => x.AccountID == id).FirstOrDefaultAsync();
     }
-  
 
     public async Task UpdateAsync(string id, Persona updatedItem)
     {
@@ -81,7 +80,6 @@ public class AccountService : MongoDbService<Account>
             throw new Exception($"Failed to update the account with ID {id}.");
         }
     }
-
 
     public async Task<Account> GetByHumanIdAsync(string humanId)
     {

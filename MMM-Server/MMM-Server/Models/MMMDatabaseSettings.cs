@@ -9,8 +9,9 @@
         public string PersonaeCollectionName { get; set; } = null!;
         public string DevicesCollectionName { get; set; } = null!;
         public string AccountsCollectionName { get; set; } = null!;
-        public string ActionsCollectionName { get; set; } = null!;
-
+        public string ActionRequestsCollectionName { get; set; } = null!;
+        public string TransactionsCollectionName { get; set; } = null!;           
+        public string MessagesCollectionName { get; set; } = null!;
 
     }
 }
