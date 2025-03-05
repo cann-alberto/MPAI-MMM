@@ -11,7 +11,7 @@ public class Message
     public string Body { get; set; } = null;
     public string Source { get; set; } = null;
     public string Destination { get; set; } = null;    
-    public string? Time { get; set; } = null!;
+    public string Time { get; set; } = null!;
 
 
 
