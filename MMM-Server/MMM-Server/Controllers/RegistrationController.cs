@@ -51,21 +51,21 @@ public class RegistrationController : ControllerBase
         return CreatedAtAction(nameof(Get), new { id = newUser.Id }, newUser);
     }
 
-    [HttpPost("personae")]
-    public async Task<IActionResult> Post(Persona newPersona)
-    {
-        await _personaeService.CreateAsync(newPersona);
+    //[HttpPost("personae")]
+    //public async Task<IActionResult> Post(Persona newPersona)
+    //{
+    //    await _personaeService.CreateAsync(newPersona);
 
-        return CreatedAtAction(nameof(Get), new { id = newPersona.PersonaID }, newPersona);
-    }
+    //    return CreatedAtAction(nameof(Get), new { id = newPersona.PersonaID }, newPersona);
+    //}
 
-    [HttpPost("devices")]
-    public async Task<IActionResult> Post(Device newDevice)
-    {
-        await _devicesService.CreateAsync(newDevice);
+    //[HttpPost("devices")]
+    //public async Task<IActionResult> Post(Device newDevice)
+    //{
+    //    await _devicesService.CreateAsync(newDevice);
 
-        return CreatedAtAction(nameof(Get), new { id = newDevice.Id }, newDevice);
-    }
+    //    return CreatedAtAction(nameof(Get), new { id = newDevice.Id }, newDevice);
+    //}
 
     [HttpGet("accounts/{humanId}")]
     public async Task<IActionResult> GetAccountByHumanId(string humanId)

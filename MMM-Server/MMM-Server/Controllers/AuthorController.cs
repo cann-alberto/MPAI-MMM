@@ -15,9 +15,9 @@ public class AuthorController : ControllerBase
         _usersService = usersService;
     }
 
-    [HttpGet("users")]
-    public async Task<List<User>> Get() =>
-        await _usersService.GetAsync();
+    //[HttpGet("users")]
+    //public async Task<List<User>> Get() =>
+    //    await _usersService.GetAsync();
 
 
 }
