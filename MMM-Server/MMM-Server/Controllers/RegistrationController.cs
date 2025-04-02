@@ -30,43 +30,6 @@ public class RegistrationController : ControllerBase
         _accountsService = accountsService;
     }
 
-    [HttpGet("profiles")]
-    public async Task<List<PersonalProfile>> Get() =>
-        await _personalProfilesService.GetAsync();
-
-    [HttpPost("profiles")]
-    public async Task<IActionResult> Post(PersonalProfile newPersonalProfile)
-    {
-        // Insert the new profile in the DB
-        await _personalProfilesService.CreateAsync(newPersonalProfile);
-                
-        return CreatedAtAction(nameof(Get), new { id = newPersonalProfile.PersonalProfileID }, newPersonalProfile);
-    }
-
-    [HttpPost ("users")]
-    public async Task<IActionResult> Post(User newUser)
-    {
-        await _usersService.CreateAsync(newUser);
-
-        return CreatedAtAction(nameof(Get), new { id = newUser.Id }, newUser);
-    }
-
-    //[HttpPost("personae")]
-    //public async Task<IActionResult> Post(Persona newPersona)
-    //{
-    //    await _personaeService.CreateAsync(newPersona);
-
-    //    return CreatedAtAction(nameof(Get), new { id = newPersona.PersonaID }, newPersona);
-    //}
-
-    //[HttpPost("devices")]
-    //public async Task<IActionResult> Post(Device newDevice)
-    //{
-    //    await _devicesService.CreateAsync(newDevice);
-
-    //    return CreatedAtAction(nameof(Get), new { id = newDevice.Id }, newDevice);
-    //}
-
     [HttpGet("accounts/{humanId}")]
     public async Task<IActionResult> GetAccountByHumanId(string humanId)
     {
@@ -97,6 +60,42 @@ public class RegistrationController : ControllerBase
         await _accountsService.CreateAsync(newAccount);
 
         return CreatedAtAction(nameof(Get), new { id = newAccount.AccountID }, newAccount);
+    }
+    
+    [HttpPut("accounts/{accountId}/persona")]
+    public async Task<IActionResult> UpdatePersonaForAccount(string accountId, Persona updatedPersona)
+    {
+        try
+        {
+            // Call the AccountService to update the persona in the account
+            await _accountsService.UpdateAsync(accountId, updatedPersona);
+
+            // Return a success response
+            return Ok($"Persona with ID {updatedPersona.PersonaID} was successfully updated for account {accountId}.");
+        }
+        catch (Exception ex)
+        {
+            // Return a bad request with the error message if something fails
+            return BadRequest($"An error occurred while updating the persona for account {accountId}: {ex.Message}");
+        }
+    }
+
+    [HttpPut("accounts/{accountId}")]
+    public async Task<IActionResult> UpdateAccount(string accountId, Account updatedAccount)
+    {
+        try
+        {
+            // Call the AccountService to update the persona in the account
+            await _accountsService.UpdateAsync(accountId, updatedAccount);
+
+            // Return a success response
+            return Ok($"Account with ID {updatedAccount.AccountID} was successfully updated");
+        }
+        catch (Exception ex)
+        {
+            // Return a bad request with the error message if something fails
+            return BadRequest($"An error occurred while updating the account {accountId}: {ex.Message}");
+        }
     }
 
     [HttpGet("avatars/{name}")]
@@ -160,39 +159,42 @@ public class RegistrationController : ControllerBase
         }
     }
 
-    [HttpPut("accounts/{accountId}/persona")]
-    public async Task<IActionResult> UpdatePersonaForAccount(string accountId, Persona updatedPersona)
-    {
-        try
-        {
-            // Call the AccountService to update the persona in the account
-            await _accountsService.UpdateAsync(accountId, updatedPersona);
+    [HttpGet("profiles")]
+    public async Task<List<PersonalProfile>> Get() =>
+        await _personalProfilesService.GetAsync();
 
-            // Return a success response
-            return Ok($"Persona with ID {updatedPersona.PersonaID} was successfully updated for account {accountId}.");
-        }
-        catch (Exception ex)
-        {
-            // Return a bad request with the error message if something fails
-            return BadRequest($"An error occurred while updating the persona for account {accountId}: {ex.Message}");
-        }
+    [HttpPost("profiles")]
+    public async Task<IActionResult> Post(PersonalProfile newPersonalProfile)
+    {
+        // Insert the new profile in the DB
+        await _personalProfilesService.CreateAsync(newPersonalProfile);
+                
+        return CreatedAtAction(nameof(Get), new { id = newPersonalProfile.PersonalProfileID }, newPersonalProfile);
     }
 
-    [HttpPut("accounts/{accountId}")]
-    public async Task<IActionResult> UpdateAccount(string accountId, Account updatedAccount)
+    [HttpPost ("users")]
+    public async Task<IActionResult> Post(User newUser)
     {
-        try
-        {
-            // Call the AccountService to update the persona in the account
-            await _accountsService.UpdateAsync(accountId, updatedAccount);
+        await _usersService.CreateAsync(newUser);
 
-            // Return a success response
-            return Ok($"Account with ID {updatedAccount.AccountID} was successfully updated");
-        }
-        catch (Exception ex)
-        {
-            // Return a bad request with the error message if something fails
-            return BadRequest($"An error occurred while updating the account {accountId}: {ex.Message}");
-        }
+        return CreatedAtAction(nameof(Get), new { id = newUser.UserID }, newUser);
     }
+
+    //[HttpPost("personae")]
+    //public async Task<IActionResult> Post(Persona newPersona)
+    //{
+    //    await _personaeService.CreateAsync(newPersona);
+
+    //    return CreatedAtAction(nameof(Get), new { id = newPersona.PersonaID }, newPersona);
+    //}
+
+    //[HttpPost("devices")]
+    //public async Task<IActionResult> Post(Device newDevice)
+    //{
+    //    await _devicesService.CreateAsync(newDevice);
+
+    //    return CreatedAtAction(nameof(Get), new { id = newDevice.Id }, newDevice);
+    //}
+
+    
 }

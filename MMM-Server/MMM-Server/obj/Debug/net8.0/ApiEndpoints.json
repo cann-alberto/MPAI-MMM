@@ -1,35 +1,15 @@
 [
   {
     "ContainingType": "MMM_Server.Controllers.ActivityController",
-    "Method": "GetActions",
-    "RelativePath": "api/Activity/logins",
+    "Method": "GetUserByHumanId",
+    "RelativePath": "api/Activity/user/humanid/{humanId}",
     "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": [
-      {
-        "Type": "System.Collections.Generic.List\u00601[[MMM_Server.Models.ActionRequest, MMM-Server, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "MMM_Server.Controllers.ActivityController",
-    "Method": "Post",
-    "RelativePath": "api/Activity/logins",
-    "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "newAction",
-        "Type": "MMM_Server.Models.ActionRequest",
+        "Name": "humanId",
+        "Type": "System.String",
         "IsRequired": true
       }
     ],
@@ -56,24 +36,25 @@
     ]
   },
   {
-    "ContainingType": "MMM_Server.Controllers.AuthorController",
-    "Method": "Get",
-    "RelativePath": "api/Author/users",
-    "HttpMethod": "GET",
+    "ContainingType": "MMM_Server.Controllers.ActivityController",
+    "Method": "UpdateAccount",
+    "RelativePath": "api/Activity/users/{userId}/comInfo",
+    "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": [
+    "Parameters": [
       {
-        "Type": "System.Collections.Generic.List\u00601[[MMM_Server.Models.User, MMM-Server, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
+        "Name": "userId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "updatedUser",
+        "Type": "MMM_Server.Models.User",
+        "IsRequired": true
       }
-    ]
+    ],
+    "ReturnTypes": []
   },
   {
     "ContainingType": "MMM_Server.Controllers.CommunicationController",
@@ -238,38 +219,6 @@
         "Name": "format",
         "Type": "System.String",
         "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "MMM_Server.Controllers.RegistrationController",
-    "Method": "Post",
-    "RelativePath": "api/Registration/devices",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "newDevice",
-        "Type": "MMM_Server.Models.Device",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "MMM_Server.Controllers.RegistrationController",
-    "Method": "Post",
-    "RelativePath": "api/Registration/personae",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "newPersona",
-        "Type": "MMM_Server.Models.Persona",
-        "IsRequired": true
       }
     ],
     "ReturnTypes": []

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MMM-Server")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6b5027c433ea6937ea9687f88fe2b87e947c15ff")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ae7866c4acb32e2378b42a702fff8bf2a07c2bc7")]
 [assembly: System.Reflection.AssemblyProductAttribute("MMM-Server")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MMM-Server")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
