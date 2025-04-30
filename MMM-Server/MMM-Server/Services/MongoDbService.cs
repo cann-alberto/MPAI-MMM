@@ -21,5 +21,6 @@ public class MongoDbService<T>
         await _collection.Find(_ => true).ToListAsync();
 
     public async Task CreateAsync(T newItem) =>
-        await _collection.InsertOneAsync(newItem);    
+        await _collection.InsertOneAsync(newItem);
+    
 }

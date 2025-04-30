@@ -1,14 +1,14 @@
 [
   {
     "ContainingType": "MMM_Server.Controllers.ActivityController",
-    "Method": "GetUserByHumanId",
-    "RelativePath": "api/Activity/user/humanid/{humanId}",
-    "HttpMethod": "GET",
+    "Method": "DeleteRight",
+    "RelativePath": "api/Activity/process-action/{processActionId}",
+    "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "humanId",
+        "Name": "processActionId",
         "Type": "System.String",
         "IsRequired": true
       }
@@ -18,6 +18,63 @@
   {
     "ContainingType": "MMM_Server.Controllers.ActivityController",
     "Method": "Get",
+    "RelativePath": "api/Activity/process-actions",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[MMM_Server.Models.ProcessAction, MMM-Server, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MMM_Server.Controllers.ActivityController",
+    "Method": "Post",
+    "RelativePath": "api/Activity/process-actions",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newProcessAction",
+        "Type": "MMM_Server.Models.ProcessAction",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MMM_Server.Controllers.ActivityController",
+    "Method": "UpdateRightForRightId",
+    "RelativePath": "api/Activity/process-actions/{processActionId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "processActionId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "updatedProcessAction",
+        "Type": "MMM_Server.Models.ProcessAction",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MMM_Server.Controllers.ActivityController",
+    "Method": "GetUsers",
     "RelativePath": "api/Activity/users",
     "HttpMethod": "GET",
     "IsController": true,
@@ -51,6 +108,240 @@
       {
         "Name": "updatedUser",
         "Type": "MMM_Server.Models.User",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MMM_Server.Controllers.ActivityController",
+    "Method": "GetUserByHumanId",
+    "RelativePath": "api/Activity/users/humanid/{humanId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "humanId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MMM_Server.Controllers.AuthenticationController",
+    "Method": "GetAuthentications",
+    "RelativePath": "api/Authentication/authentications",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[MMM_Server.Models.Authentication, MMM-Server, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MMM_Server.Controllers.AuthenticationController",
+    "Method": "Post",
+    "RelativePath": "api/Authentication/authentications",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newAuthentication",
+        "Type": "MMM_Server.Models.Authentication",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MMM_Server.Controllers.AuthenticationController",
+    "Method": "DeleteAuthentication",
+    "RelativePath": "api/Authentication/authentications/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MMM_Server.Controllers.AuthorController",
+    "Method": "GetBasicObjects",
+    "RelativePath": "api/Author/basic-objects",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[MMM_Server.Models.BasicObject, MMM-Server, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MMM_Server.Controllers.AuthorController",
+    "Method": "Post",
+    "RelativePath": "api/Author/basic-objects",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newBasicObject",
+        "Type": "MMM_Server.Models.BasicObject",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MMM_Server.Controllers.AuthorController",
+    "Method": "DeleteBasicObject",
+    "RelativePath": "api/Author/basic-objects/{basicObjectId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "basicObjectId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MMM_Server.Controllers.AuthorController",
+    "Method": "GetItems",
+    "RelativePath": "api/Author/items",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[MMM_Server.Models.Item, MMM-Server, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MMM_Server.Controllers.AuthorController",
+    "Method": "Post",
+    "RelativePath": "api/Author/items",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "jsonBody",
+        "Type": "System.Text.Json.JsonElement",
+        "IsRequired": true
+      },
+      {
+        "Name": "format",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MMM_Server.Controllers.AuthorController",
+    "Method": "Delete",
+    "RelativePath": "api/Author/items/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "format",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MMM_Server.Controllers.AuthorController",
+    "Method": "GetObjects",
+    "RelativePath": "api/Author/objects",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[MMM_Server.Models.MObject, MMM-Server, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MMM_Server.Controllers.AuthorController",
+    "Method": "Post",
+    "RelativePath": "api/Author/objects",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newObject",
+        "Type": "MMM_Server.Models.MObject",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MMM_Server.Controllers.AuthorController",
+    "Method": "DeleteObject",
+    "RelativePath": "api/Author/objects/{objectId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "objectId",
+        "Type": "System.String",
         "IsRequired": true
       }
     ],
@@ -93,16 +384,131 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "MMM_Server.Controllers.LocationController",
+    "ContainingType": "MMM_Server.Controllers.ConversionController",
+    "Method": "UpdateItemForItemId",
+    "RelativePath": "api/Conversion/basic-objects/{basicObjectId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "basicObjectId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "updatedBasicObject",
+        "Type": "MMM_Server.Models.BasicObject",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MMM_Server.Controllers.ConversionController",
+    "Method": "UpdateItemForItemId",
+    "RelativePath": "api/Conversion/items/{itemId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "itemId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "updatedItem",
+        "Type": "MMM_Server.Models.Item",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MMM_Server.Controllers.ConversionController",
+    "Method": "UpdateItemForItemId",
+    "RelativePath": "api/Conversion/objects/{objectId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "objectId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "updatedObject",
+        "Type": "MMM_Server.Models.MObject",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MMM_Server.Controllers.DiscoveryController",
+    "Method": "GetBasicDiscoveries",
+    "RelativePath": "api/Discovery/basic-discoveries",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[MMM_Server.Models.BasicDiscovery, MMM-Server, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MMM_Server.Controllers.DiscoveryController",
     "Method": "Post",
-    "RelativePath": "api/Location/action-request",
+    "RelativePath": "api/Discovery/basic-discoveries",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "newActionRequest",
-        "Type": "MMM_Server.Models.ActionRequest",
+        "Name": "newBasicDiscovery",
+        "Type": "MMM_Server.Models.BasicDiscovery",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MMM_Server.Controllers.DiscoveryController",
+    "Method": "DeleteAuthentication",
+    "RelativePath": "api/Discovery/basic-discoveries/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MMM_Server.Controllers.DiscoveryController",
+    "Method": "GetItemIdsAndProcesses",
+    "RelativePath": "api/Discovery/basic-discoveries/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
         "IsRequired": true
       }
     ],
@@ -110,15 +516,192 @@
   },
   {
     "ContainingType": "MMM_Server.Controllers.LocationController",
-    "Method": "Get",
-    "RelativePath": "api/Location/action-requests",
+    "Method": "GetBasicMLocations",
+    "RelativePath": "api/Location/basic-mlocations",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.List\u00601[[MMM_Server.Models.ActionRequest, MMM-Server, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.List\u00601[[MMM_Server.Models.BasicMLocation, MMM-Server, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MMM_Server.Controllers.LocationController",
+    "Method": "Post",
+    "RelativePath": "api/Location/basic-mlocations",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newBasicMLocation",
+        "Type": "MMM_Server.Models.BasicMLocation",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MMM_Server.Controllers.LocationController",
+    "Method": "DeleteBasicObject",
+    "RelativePath": "api/Location/basic-mlocations/{basicMLocationId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "basicMLocationId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MMM_Server.Controllers.LocationController",
+    "Method": "GetMLocations",
+    "RelativePath": "api/Location/mlocations",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[MMM_Server.Models.MLocation, MMM-Server, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MMM_Server.Controllers.LocationController",
+    "Method": "Post",
+    "RelativePath": "api/Location/mlocations",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newMLocation",
+        "Type": "MMM_Server.Models.MLocation",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MMM_Server.Controllers.LocationController",
+    "Method": "DeleteObject",
+    "RelativePath": "api/Location/mlocations/{mLocationId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "mLocationId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MMM_Server.Controllers.MarketplaceController",
+    "Method": "GetAssets",
+    "RelativePath": "api/Marketplace/assets",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[MMM_Server.Models.Asset, MMM-Server, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MMM_Server.Controllers.MarketplaceController",
+    "Method": "Post",
+    "RelativePath": "api/Marketplace/assets",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newAsset",
+        "Type": "MMM_Server.Models.Asset",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MMM_Server.Controllers.MarketplaceController",
+    "Method": "UpdateAssetForAssetId",
+    "RelativePath": "api/Marketplace/assets/{assetId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "assetId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "updatedAsset",
+        "Type": "MMM_Server.Models.Asset",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MMM_Server.Controllers.MarketplaceController",
+    "Method": "DeleteAuthentication",
+    "RelativePath": "api/Marketplace/assets/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MMM_Server.Controllers.RegistrationController",
+    "Method": "GetAccounts",
+    "RelativePath": "api/Registration/accounts",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[MMM_Server.Models.Account, MMM-Server, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -167,27 +750,6 @@
   },
   {
     "ContainingType": "MMM_Server.Controllers.RegistrationController",
-    "Method": "UpdatePersonaForAccount",
-    "RelativePath": "api/Registration/accounts/{accountId}/persona",
-    "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "accountId",
-        "Type": "System.String",
-        "IsRequired": true
-      },
-      {
-        "Name": "updatedPersona",
-        "Type": "MMM_Server.Models.Persona",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "MMM_Server.Controllers.RegistrationController",
     "Method": "GetAccountByHumanId",
     "RelativePath": "api/Registration/accounts/{humanId}",
     "HttpMethod": "GET",
@@ -225,7 +787,7 @@
   },
   {
     "ContainingType": "MMM_Server.Controllers.RegistrationController",
-    "Method": "Get",
+    "Method": "GetProfiles",
     "RelativePath": "api/Registration/profiles",
     "HttpMethod": "GET",
     "IsController": true,
@@ -261,6 +823,26 @@
   },
   {
     "ContainingType": "MMM_Server.Controllers.RegistrationController",
+    "Method": "GetUsers",
+    "RelativePath": "api/Registration/users",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[MMM_Server.Models.User, MMM-Server, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MMM_Server.Controllers.RegistrationController",
     "Method": "Post",
     "RelativePath": "api/Registration/users",
     "HttpMethod": "POST",
@@ -276,25 +858,387 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "MMM_Server.Controllers.TransactController",
-    "Method": "Post",
-    "RelativePath": "api/Transact/transaction",
-    "HttpMethod": "POST",
+    "ContainingType": "MMM_Server.Controllers.RightController",
+    "Method": "GetRightsForAccount",
+    "RelativePath": "api/Right/accounts/{accountId}/{userId}/rights",
+    "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "newTransaction",
-        "Type": "MMM_Server.Models.Transaction",
+        "Name": "accountId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "userId",
+        "Type": "System.String",
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "MMM_Server.Controllers.TransactController",
-    "Method": "Get",
-    "RelativePath": "api/Transact/transactions",
+    "ContainingType": "MMM_Server.Controllers.RightController",
+    "Method": "AddRightForAccount",
+    "RelativePath": "api/Right/accounts/{accountId}/{userId}/rights",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "accountId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "userId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "rightId",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MMM_Server.Controllers.RightController",
+    "Method": "DeleteRightForAccountId",
+    "RelativePath": "api/Right/accounts/{accountId}/{userId}/rights/{rightId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "accountId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "userId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "rightId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MMM_Server.Controllers.RightController",
+    "Method": "GetRightsForBasicMLocation",
+    "RelativePath": "api/Right/basic-mLocations/{mLocationId}/rights",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "mLocationId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MMM_Server.Controllers.RightController",
+    "Method": "AddRightForBasicMLocation",
+    "RelativePath": "api/Right/basic-mLocations/{mLocationId}/rights",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "mLocationId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "rightId",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MMM_Server.Controllers.RightController",
+    "Method": "DeleteRightForBasicMLocation",
+    "RelativePath": "api/Right/basic-mLocations/{mLocationId}/rights/{rightId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "mLocationId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "rightId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MMM_Server.Controllers.RightController",
+    "Method": "GetRightsForBasicObject",
+    "RelativePath": "api/Right/basic-objects/{basicObjectId}/rights",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "basicObjectId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MMM_Server.Controllers.RightController",
+    "Method": "AddRightForBasicObject",
+    "RelativePath": "api/Right/basic-objects/{basicObjectId}/rights",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "basicObjectId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "rightId",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MMM_Server.Controllers.RightController",
+    "Method": "DeleteRightForBasicObject",
+    "RelativePath": "api/Right/basic-objects/{basicObjectId}/rights/{rightId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "basicObjectId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "rightId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MMM_Server.Controllers.RightController",
+    "Method": "GetRightsForMLocation",
+    "RelativePath": "api/Right/mLocations/{mLocationId}/rights",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "mLocationId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MMM_Server.Controllers.RightController",
+    "Method": "AddRightForMLocation",
+    "RelativePath": "api/Right/mLocations/{mLocationId}/rights",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "mLocationId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "rightId",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MMM_Server.Controllers.RightController",
+    "Method": "DeleteRightForMLocation",
+    "RelativePath": "api/Right/mLocations/{mLocationId}/rights/{rightId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "mLocationId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "rightId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MMM_Server.Controllers.RightController",
+    "Method": "GetRightsForObject",
+    "RelativePath": "api/Right/objects/{objectId}/rights",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "objectId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MMM_Server.Controllers.RightController",
+    "Method": "AddRightForObject",
+    "RelativePath": "api/Right/objects/{objectId}/rights",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "objectId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "rightId",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MMM_Server.Controllers.RightController",
+    "Method": "DeleteRightForObject",
+    "RelativePath": "api/Right/objects/{ObjectId}/rights/{rightId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "objectId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "rightId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MMM_Server.Controllers.RightController",
+    "Method": "GetRights",
+    "RelativePath": "api/Right/rights",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[MMM_Server.Models.Right, MMM-Server, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MMM_Server.Controllers.RightController",
+    "Method": "Post",
+    "RelativePath": "api/Right/rights",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newRight",
+        "Type": "MMM_Server.Models.Right",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MMM_Server.Controllers.RightController",
+    "Method": "UpdateRightForRightId",
+    "RelativePath": "api/Right/rights/{rightId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "rightId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "updatedRight",
+        "Type": "MMM_Server.Models.Right",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MMM_Server.Controllers.RightController",
+    "Method": "DeleteRight",
+    "RelativePath": "api/Right/rights/{rightId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "rightId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MMM_Server.Controllers.TransactionController",
+    "Method": "GetTrasactions",
+    "RelativePath": "api/Transaction/transactions",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -310,5 +1254,94 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "MMM_Server.Controllers.TransactionController",
+    "Method": "Post",
+    "RelativePath": "api/Transaction/transactions",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newTransaction",
+        "Type": "MMM_Server.Models.Transaction",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MMM_Server.Controllers.TransactionController",
+    "Method": "GetWallets",
+    "RelativePath": "api/Transaction/wallets",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[MMM_Server.Models.Wallet, MMM-Server, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MMM_Server.Controllers.TransactionController",
+    "Method": "Post",
+    "RelativePath": "api/Transaction/wallets",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newWallet",
+        "Type": "MMM_Server.Models.Wallet",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MMM_Server.Controllers.TransactionController",
+    "Method": "GetWalletById",
+    "RelativePath": "api/Transaction/wallets/{walletId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "walletId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MMM_Server.Controllers.TransactionController",
+    "Method": "UpdateWalletForWalletId",
+    "RelativePath": "api/Transaction/wallets/{walletId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "walletId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "updatedWallet",
+        "Type": "MMM_Server.Models.Wallet",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   }
 ]

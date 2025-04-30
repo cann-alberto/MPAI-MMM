@@ -18,7 +18,3 @@ public class MessageService: MongoDbService<Message>
         return await _collection.Find(x => x.MessageID == id).FirstOrDefaultAsync();
     }
 }
-
-
-
-

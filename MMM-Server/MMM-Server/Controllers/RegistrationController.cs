@@ -1,6 +1,7 @@
 ﻿using MMM_Server.Models;
 using MMM_Server.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.FileSystemGlobbing.Internal;
 
 
 namespace MMM_Server.Controllers;
@@ -12,22 +13,17 @@ public class RegistrationController : ControllerBase
 
     private readonly PersonalProfileService _personalProfilesService;
     private readonly UserService _usersService;
-    private readonly PersonaService _personaeService;
-    private readonly DeviceService _devicesService;
-    private readonly AccountService _accountsService;
+    private readonly AccountService _accountsService;    
 
     public RegistrationController(
         PersonalProfileService profilesService, 
-        UserService usersService,
-        PersonaService personaeService,
-        DeviceService devicesService,
-        AccountService accountsService)
+        UserService usersService,              
+        AccountService accountsService, 
+        ProcessActionService processActionService)
     {
         _personalProfilesService = profilesService;
-        _usersService = usersService;
-        _personaeService = personaeService;
-        _devicesService = devicesService;
-        _accountsService = accountsService;
+        _usersService = usersService;        
+        _accountsService = accountsService;        
     }
 
     [HttpGet("accounts/{humanId}")]
@@ -54,31 +50,18 @@ public class RegistrationController : ControllerBase
         }
     }
 
+    [HttpGet("accounts")]
+    public async Task<List<Account>> GetAccounts() =>
+        await _accountsService.GetAsync();
+
     [HttpPost("accounts")]
     public async Task<IActionResult> Post(Account newAccount)
     {
         await _accountsService.CreateAsync(newAccount);
 
-        return CreatedAtAction(nameof(Get), new { id = newAccount.AccountID }, newAccount);
+        return CreatedAtAction(nameof(GetAccounts), new { id = newAccount.AccountID }, newAccount);
     }
-    
-    [HttpPut("accounts/{accountId}/persona")]
-    public async Task<IActionResult> UpdatePersonaForAccount(string accountId, Persona updatedPersona)
-    {
-        try
-        {
-            // Call the AccountService to update the persona in the account
-            await _accountsService.UpdateAsync(accountId, updatedPersona);
-
-            // Return a success response
-            return Ok($"Persona with ID {updatedPersona.PersonaID} was successfully updated for account {accountId}.");
-        }
-        catch (Exception ex)
-        {
-            // Return a bad request with the error message if something fails
-            return BadRequest($"An error occurred while updating the persona for account {accountId}: {ex.Message}");
-        }
-    }
+        
 
     [HttpPut("accounts/{accountId}")]
     public async Task<IActionResult> UpdateAccount(string accountId, Account updatedAccount)
@@ -113,7 +96,7 @@ public class RegistrationController : ControllerBase
         var pngFilePath = Path.Combine(avatarDirectory, $"{name}.png");
 
 
-        // Se il formato richiesto è "json", restituisci i metadati
+        // If the requested format is "json", return the metadata
         if (format.ToLower() == "json")
         {
             if (System.IO.File.Exists(metadataFilePath))
@@ -126,7 +109,7 @@ public class RegistrationController : ControllerBase
                 return NotFound($"Metadata file for avatar '{name}.json' not found.");
             }
         }
-        // Altrimenti, se il formato è "glb", restituisci il modello .glb
+        // If the requested format is "glb", return the 3D model
         else if (format.ToLower() == "glb")
         {
             if (System.IO.File.Exists(glbFilePath))
@@ -139,7 +122,7 @@ public class RegistrationController : ControllerBase
                 return NotFound($"Avatar file '{name}.glb' not found.");
             }
         }
-
+        // If the requested format is "png", return the preview image of the model
         else if (format.ToLower() == "png")
         {
             if (System.IO.File.Exists(pngFilePath))
@@ -160,7 +143,7 @@ public class RegistrationController : ControllerBase
     }
 
     [HttpGet("profiles")]
-    public async Task<List<PersonalProfile>> Get() =>
+    public async Task<List<PersonalProfile>> GetProfiles() =>
         await _personalProfilesService.GetAsync();
 
     [HttpPost("profiles")]
@@ -169,32 +152,20 @@ public class RegistrationController : ControllerBase
         // Insert the new profile in the DB
         await _personalProfilesService.CreateAsync(newPersonalProfile);
                 
-        return CreatedAtAction(nameof(Get), new { id = newPersonalProfile.PersonalProfileID }, newPersonalProfile);
+        return CreatedAtAction(nameof(GetProfiles), new { id = newPersonalProfile.PersonalProfileID }, newPersonalProfile);
     }
+
+    [HttpGet("users")]
+    public async Task<List<User>> GetUsers() =>
+    await _usersService.GetAsync();
 
     [HttpPost ("users")]
     public async Task<IActionResult> Post(User newUser)
     {
         await _usersService.CreateAsync(newUser);
 
-        return CreatedAtAction(nameof(Get), new { id = newUser.UserID }, newUser);
+        return CreatedAtAction(nameof(GetUsers), new { id = newUser.UserID }, newUser);
     }
+       
 
-    //[HttpPost("personae")]
-    //public async Task<IActionResult> Post(Persona newPersona)
-    //{
-    //    await _personaeService.CreateAsync(newPersona);
-
-    //    return CreatedAtAction(nameof(Get), new { id = newPersona.PersonaID }, newPersona);
-    //}
-
-    //[HttpPost("devices")]
-    //public async Task<IActionResult> Post(Device newDevice)
-    //{
-    //    await _devicesService.CreateAsync(newDevice);
-
-    //    return CreatedAtAction(nameof(Get), new { id = newDevice.Id }, newDevice);
-    //}
-
-    
 }

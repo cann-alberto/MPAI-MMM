@@ -9,20 +9,66 @@ namespace MMM_Server.Controllers;
 public class ActivityController: ControllerBase
 {
     private readonly UserService _usersService;
+    private readonly ProcessActionService _actionsService;
 
-    
-    public ActivityController(UserService usersService)
+
+    public ActivityController(UserService usersService, ProcessActionService actionService)
     {
         _usersService = usersService;
+        _actionsService = actionService;
+    }
+
+    [HttpGet("process-actions")]
+    public async Task<List<ProcessAction>> Get() =>
+       await _actionsService.GetAsync();
+
+    
+    [HttpPost("process-actions")]
+    public async Task<IActionResult> Post(ProcessAction newProcessAction)
+    {
+        await _actionsService.CreateAsync(newProcessAction);
+
+        return CreatedAtAction(nameof(Get), new { id = newProcessAction.ProcessActionID }, newProcessAction);
+    }
+
+    [HttpPut("process-actions/{processActionId}")]
+    public async Task<IActionResult> UpdateRightForRightId(string processActionId, ProcessAction updatedProcessAction)
+    {
+        try
+        {            
+            await _actionsService.UpdateAsync(processActionId, updatedProcessAction);
+            
+            return Ok($"Process Action with ID {updatedProcessAction.ProcessActionID} was successfully updated for right {processActionId}.");
+        }
+        catch (Exception ex)
+        {            
+            return BadRequest($"An error occurred while updating the process action for {processActionId}: {ex.Message}");
+        }
+    }
+
+    // Delete an existing right by rightId
+    [HttpDelete("process-action/{processActionId}")]
+    public async Task<IActionResult> DeleteRight(string processActionId)
+    {
+        try
+        {
+            await _actionsService.DeleteAsync(processActionId);
+            return Ok($"Process Action with ID {processActionId} was successfully deleted.");
+        }
+        catch (Exception ex)
+        {
+            return NotFound($"An error occurred while deleting the process action with ID {processActionId}: {ex.Message}");
+        }
     }
 
 
+
     [HttpGet("users")]
-    public async Task<List<User>> Get() =>
+    public async Task<List<User>> GetUsers() =>
         await _usersService.GetAsync();
 
 
-    [HttpGet("user/humanid/{humanId}")]
+    [HttpGet("users/humanid/{humanId}")]
     public async Task<IActionResult> GetUserByHumanId(string humanId)
     {
         try
@@ -64,6 +110,7 @@ public class ActivityController: ControllerBase
             return BadRequest($"An error occurred while updating the user {userId}: {ex.Message}");
         }
     }
+
 
 
 

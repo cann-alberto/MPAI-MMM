@@ -1,32 +1,37 @@
 ﻿using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Bson;
+using System.ComponentModel.DataAnnotations;
 
 namespace MMM_Server.Models;
 
 public class Account
 {
+    [RegularExpression(@"^MMM-ACC-V[0-9]{1,2}[.][0-9]{1,2}$", ErrorMessage = "Header must match the pattern: MMM-ACC-V<digit(s)>.<digit(s)>")]
+    public string Header { get; set; } = null!; // Account Header
+    
+    public string? MInstanceID { get; set; } = null!; // Identifier of M-Instance
+    
+    public string? MEnvironmentID { get; set; } = null!; // Identifier of M-Environment
+
     [BsonId]
-    [BsonRepresentation(BsonType.ObjectId)]
-    public string? AccountID { get; set; }
+    [BsonRepresentation(BsonType.ObjectId)]    
+    public string? AccountID { get; set; } // Identifier of Account.
 
-    public string Header { get; set; } = null!;
+    public string? HumanID { get; set; } = null!; // Identifier of human.
+    
+    public string? PersonalProfileID { get; set; } = null!; // ID of Personal Profile.
 
-    public string MInstanceID { get; set; } = null!;
+    public List<ProcessData> ProcessData { get; set; } = null; // Set of Process
 
-    public string MEnvironmentID { get; set; } = null!;
+    public string? DescrMetadata { get; set; } = null!; // Descriptive Metadata
 
-    public string HumanID { get; set; } = null!;
+}
 
-    public string PersonalProfileID { get; set; } = null!;
+public class ProcessData 
+{    
+    public string? ProcessID { get; set; } = null; // ID of a Process
 
-    [BsonElement("Rights")]
-    public List<Right> Rights { get; set; } = null;
-
-    [BsonElement("Users")]
-    public List<User> Users { get; set; } = null;
-
-    [BsonElement("Personae")]
-    public List<Persona> Personae { get; set; } = null!;
-
-    public string DescrMetadata { get; set; } = null!;
+    public List<string>? RightsID { get; set; } = null; // ID of Rights held by ProcessID.
+    
+    public List<string>? PersonaID { get; set; } = null!; // Identifier of Persona
 }
