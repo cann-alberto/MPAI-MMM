@@ -10,12 +10,13 @@ public class ActivityController: ControllerBase
 {
     private readonly UserService _usersService;
     private readonly ProcessActionService _actionsService;
+    private readonly AccountService _accountsService;
 
-
-    public ActivityController(UserService usersService, ProcessActionService actionService)
+    public ActivityController(UserService usersService, ProcessActionService actionService, AccountService accountsService)
     {
         _usersService = usersService;
         _actionsService = actionService;
+        _accountsService = accountsService;
     }
 
     [HttpGet("process-actions")]
@@ -112,6 +113,29 @@ public class ActivityController: ControllerBase
     }
 
 
+    [HttpGet("accounts/{humanId}")]
+    public async Task<IActionResult> GetAccountByHumanId(string humanId)
+    {
+        try
+        {
+            // Call the service method to retrieve the account
+            var account = await _accountsService.GetByHumanIdAsync(humanId);
+
+            if (account == null)
+            {
+                // If no account is found, return a NotFound status
+                return NotFound($"Account with HumanID {humanId} not found.");
+            }
+
+            // Return the account details
+            return Ok(account);
+        }
+        catch (Exception ex)
+        {
+            // Handle any potential exceptions
+            return BadRequest($"An error occurred while retrieving the account: {ex.Message}");
+        }
+    }
 
 
 }

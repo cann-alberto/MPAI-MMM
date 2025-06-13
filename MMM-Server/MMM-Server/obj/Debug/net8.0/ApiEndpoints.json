@@ -1,6 +1,22 @@
 [
   {
     "ContainingType": "MMM_Server.Controllers.ActivityController",
+    "Method": "GetAccountByHumanId",
+    "RelativePath": "api/Activity/accounts/{humanId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "humanId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MMM_Server.Controllers.ActivityController",
     "Method": "DeleteRight",
     "RelativePath": "api/Activity/process-action/{processActionId}",
     "HttpMethod": "DELETE",
@@ -1193,6 +1209,22 @@
       {
         "Name": "newRight",
         "Type": "MMM_Server.Models.Right",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MMM_Server.Controllers.RightController",
+    "Method": "GetrightByRightId",
+    "RelativePath": "api/Right/rights/{rightId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "rightId",
+        "Type": "System.String",
         "IsRequired": true
       }
     ],

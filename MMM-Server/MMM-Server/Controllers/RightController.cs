@@ -35,6 +35,30 @@ public class RightController : ControllerBase
     public async Task<List<Right>> GetRights() =>
         await _rigthService.GetAsync();
 
+
+    [HttpGet("rights/{rightId}")]
+    public async Task<IActionResult> GetrightByRightId(string rightId)
+    {
+        try
+        {            
+            var user = await _rigthService.GetAsync(rightId);
+
+            if (user == null)
+            {
+                // If no account is found, return a NotFound status
+                return NotFound($"Right with RightID {rightId} not found.");
+            }
+
+            // Return the account details
+            return Ok(user);
+        }
+        catch (Exception ex)
+        {
+            // Handle any potential exceptions
+            return BadRequest($"An error occurred while retrieving the right: {ex.Message}");
+        }
+    }        
+
     // Create a new right
     [HttpPost("rights")]
     public async Task<IActionResult> Post(Right newRight)

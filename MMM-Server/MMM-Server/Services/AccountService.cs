@@ -13,7 +13,7 @@ public class AccountService : MongoDbService<Account>
 
     }
 
-    // You can either override the base class GetAsync method (if you need to customize behavior)
+    
     public async Task<Account?> GetAsync(string id)
     {
         // Add custom logic if needed
