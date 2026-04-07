@@ -52,4 +52,6 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+app.MapGet("/", () => Results.Json(new { status = "ok", version = "v2.0", message = "MMM Services Web Server is running" }));
+
 app.Run();

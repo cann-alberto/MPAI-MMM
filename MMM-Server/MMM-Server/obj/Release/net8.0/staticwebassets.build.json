@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "RHp0QhmZZEpOnhkqjt87Qb2Hi5NIWZcIp/ok+noasek=",
+  "Source": "MMM-Server",
+  "BasePath": "_content/MMM-Server",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
