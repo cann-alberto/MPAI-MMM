@@ -1,0 +1,4001 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "MMM Services Web Server",
+    "description": "API documentation for MMM Services Web Server",
+    "version": "v2.0"
+  },
+  "paths": {
+    "/api/Activity/process-actions": {
+      "get": {
+        "tags": [
+          "Activity"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProcessAction"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProcessAction"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProcessAction"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Activity"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProcessAction"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProcessAction"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProcessAction"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Activity/process-actions/{processActionId}": {
+      "put": {
+        "tags": [
+          "Activity"
+        ],
+        "parameters": [
+          {
+            "name": "processActionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProcessAction"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProcessAction"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProcessAction"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Activity/process-action/{processActionId}": {
+      "delete": {
+        "tags": [
+          "Activity"
+        ],
+        "parameters": [
+          {
+            "name": "processActionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Activity/users": {
+      "get": {
+        "tags": [
+          "Activity"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/User"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/User"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/User"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Activity/users/humanid/{humanId}": {
+      "get": {
+        "tags": [
+          "Activity"
+        ],
+        "parameters": [
+          {
+            "name": "humanId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Activity/users/{userId}/comInfo": {
+      "put": {
+        "tags": [
+          "Activity"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Activity/accounts/{humanId}": {
+      "get": {
+        "tags": [
+          "Activity"
+        ],
+        "parameters": [
+          {
+            "name": "humanId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Authentication/authentications": {
+      "get": {
+        "tags": [
+          "Authentication"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Authentication"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Authentication"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Authentication"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Authentication"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Authentication"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Authentication"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Authentication"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Authentication/authentications/{id}": {
+      "delete": {
+        "tags": [
+          "Authentication"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Author/items": {
+      "get": {
+        "tags": [
+          "Author"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Item"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Item"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Item"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Author"
+        ],
+        "parameters": [
+          {
+            "name": "format",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": "item"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { }
+            },
+            "text/json": {
+              "schema": { }
+            },
+            "application/*+json": {
+              "schema": { }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Author/items/{id}": {
+      "delete": {
+        "tags": [
+          "Author"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "format",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": "item"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Author/basic-objects": {
+      "get": {
+        "tags": [
+          "Author"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/BasicObject"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/BasicObject"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/BasicObject"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Author"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BasicObject"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BasicObject"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/BasicObject"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Author/basic-objects/{basicObjectId}": {
+      "delete": {
+        "tags": [
+          "Author"
+        ],
+        "parameters": [
+          {
+            "name": "basicObjectId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Author/objects": {
+      "get": {
+        "tags": [
+          "Author"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/MObject"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/MObject"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/MObject"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Author"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MObject"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MObject"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/MObject"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Author/objects/{objectId}": {
+      "delete": {
+        "tags": [
+          "Author"
+        ],
+        "parameters": [
+          {
+            "name": "objectId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Communication/messages": {
+      "get": {
+        "tags": [
+          "Communication"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Message"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Message"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Message"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Communication"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Message"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Message"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Message"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Conversion/items/{itemId}": {
+      "put": {
+        "tags": [
+          "Conversion"
+        ],
+        "parameters": [
+          {
+            "name": "itemId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Item"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Item"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Item"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Conversion/basic-objects/{basicObjectId}": {
+      "put": {
+        "tags": [
+          "Conversion"
+        ],
+        "parameters": [
+          {
+            "name": "basicObjectId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BasicObject"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BasicObject"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/BasicObject"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Conversion/objects/{objectId}": {
+      "put": {
+        "tags": [
+          "Conversion"
+        ],
+        "parameters": [
+          {
+            "name": "objectId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MObject"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MObject"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/MObject"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Discovery/basic-discoveries": {
+      "get": {
+        "tags": [
+          "Discovery"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/BasicDiscovery"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/BasicDiscovery"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/BasicDiscovery"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Discovery"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BasicDiscovery"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BasicDiscovery"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/BasicDiscovery"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Discovery/basic-discoveries/{id}": {
+      "delete": {
+        "tags": [
+          "Discovery"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Discovery"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Location/basic-mlocations": {
+      "get": {
+        "tags": [
+          "Location"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/BasicMLocation"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/BasicMLocation"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/BasicMLocation"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Location"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BasicMLocation"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BasicMLocation"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/BasicMLocation"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Location/basic-mlocations/{basicMLocationId}": {
+      "delete": {
+        "tags": [
+          "Location"
+        ],
+        "parameters": [
+          {
+            "name": "basicMLocationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Location/mlocations": {
+      "get": {
+        "tags": [
+          "Location"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/MLocation"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/MLocation"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/MLocation"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Location"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MLocation"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MLocation"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/MLocation"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Location/mlocations/{mLocationId}": {
+      "delete": {
+        "tags": [
+          "Location"
+        ],
+        "parameters": [
+          {
+            "name": "mLocationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Marketplace/assets": {
+      "get": {
+        "tags": [
+          "Marketplace"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Asset"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Asset"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Asset"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Marketplace"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Asset"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Asset"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Asset"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Marketplace/assets/{id}": {
+      "delete": {
+        "tags": [
+          "Marketplace"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Marketplace/assets/{assetId}": {
+      "put": {
+        "tags": [
+          "Marketplace"
+        ],
+        "parameters": [
+          {
+            "name": "assetId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Asset"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Asset"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Asset"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/": {
+      "get": {
+        "tags": [
+          "MMM-Server"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Registration/accounts/{humanId}": {
+      "get": {
+        "tags": [
+          "Registration"
+        ],
+        "parameters": [
+          {
+            "name": "humanId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Registration/accounts": {
+      "get": {
+        "tags": [
+          "Registration"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Account"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Account"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Account"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Registration"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Account"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Account"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Account"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Registration/accounts/{accountId}": {
+      "put": {
+        "tags": [
+          "Registration"
+        ],
+        "parameters": [
+          {
+            "name": "accountId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Account"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Account"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Account"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Registration/avatars/{name}": {
+      "get": {
+        "tags": [
+          "Registration"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "format",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": "glb"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Registration/profiles": {
+      "get": {
+        "tags": [
+          "Registration"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PersonalProfile"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PersonalProfile"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PersonalProfile"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Registration"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PersonalProfile"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PersonalProfile"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PersonalProfile"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Registration/users": {
+      "get": {
+        "tags": [
+          "Registration"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/User"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/User"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/User"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Registration"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Right/rights": {
+      "get": {
+        "tags": [
+          "Right"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Right"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Right"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Right"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Right"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Right"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Right"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Right"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Right/rights/{rightId}": {
+      "get": {
+        "tags": [
+          "Right"
+        ],
+        "parameters": [
+          {
+            "name": "rightId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Right"
+        ],
+        "parameters": [
+          {
+            "name": "rightId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Right"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Right"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Right"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Right"
+        ],
+        "parameters": [
+          {
+            "name": "rightId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Right/accounts/{accountId}/{userId}/rights": {
+      "get": {
+        "tags": [
+          "Right"
+        ],
+        "parameters": [
+          {
+            "name": "accountId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Right"
+        ],
+        "parameters": [
+          {
+            "name": "accountId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "rightId",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Right/accounts/{accountId}/{userId}/rights/{rightId}": {
+      "delete": {
+        "tags": [
+          "Right"
+        ],
+        "parameters": [
+          {
+            "name": "accountId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "rightId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Right/basic-objects/{basicObjectId}/rights": {
+      "get": {
+        "tags": [
+          "Right"
+        ],
+        "parameters": [
+          {
+            "name": "basicObjectId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Right"
+        ],
+        "parameters": [
+          {
+            "name": "basicObjectId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "rightId",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Right/basic-objects/{basicObjectId}/rights/{rightId}": {
+      "delete": {
+        "tags": [
+          "Right"
+        ],
+        "parameters": [
+          {
+            "name": "basicObjectId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "rightId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Right/objects/{objectId}/rights": {
+      "get": {
+        "tags": [
+          "Right"
+        ],
+        "parameters": [
+          {
+            "name": "objectId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Right"
+        ],
+        "parameters": [
+          {
+            "name": "objectId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "rightId",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Right/objects/{ObjectId}/rights/{rightId}": {
+      "delete": {
+        "tags": [
+          "Right"
+        ],
+        "parameters": [
+          {
+            "name": "objectId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "rightId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Right/basic-mLocations/{mLocationId}/rights": {
+      "get": {
+        "tags": [
+          "Right"
+        ],
+        "parameters": [
+          {
+            "name": "mLocationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Right"
+        ],
+        "parameters": [
+          {
+            "name": "mLocationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "rightId",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Right/basic-mLocations/{mLocationId}/rights/{rightId}": {
+      "delete": {
+        "tags": [
+          "Right"
+        ],
+        "parameters": [
+          {
+            "name": "mLocationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "rightId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Right/mLocations/{mLocationId}/rights": {
+      "get": {
+        "tags": [
+          "Right"
+        ],
+        "parameters": [
+          {
+            "name": "mLocationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Right"
+        ],
+        "parameters": [
+          {
+            "name": "mLocationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "rightId",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Right/mLocations/{mLocationId}/rights/{rightId}": {
+      "delete": {
+        "tags": [
+          "Right"
+        ],
+        "parameters": [
+          {
+            "name": "mLocationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "rightId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Transaction/transactions": {
+      "get": {
+        "tags": [
+          "Transaction"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Transaction"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Transaction"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Transaction"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Transaction"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Transaction"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Transaction"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Transaction"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Transaction/wallets": {
+      "get": {
+        "tags": [
+          "Transaction"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Wallet"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Wallet"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Wallet"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Transaction"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Wallet"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Wallet"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Wallet"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Transaction/wallets/{walletId}": {
+      "get": {
+        "tags": [
+          "Transaction"
+        ],
+        "parameters": [
+          {
+            "name": "walletId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Transaction"
+        ],
+        "parameters": [
+          {
+            "name": "walletId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Wallet"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Wallet"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Wallet"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AccelerationOfOrientation": {
+        "type": "object",
+        "properties": {
+          "orientAccel": {
+            "type": "array",
+            "items": {
+              "type": "number",
+              "format": "double"
+            },
+            "nullable": true
+          },
+          "orientAccelAccuracy": {
+            "type": "array",
+            "items": {
+              "type": "number",
+              "format": "double"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AccelerationOfPosition": {
+        "type": "object",
+        "properties": {
+          "cartAccel": {
+            "type": "array",
+            "items": {
+              "type": "number",
+              "format": "double"
+            },
+            "nullable": true
+          },
+          "cartAccelAccuracy": {
+            "type": "array",
+            "items": {
+              "type": "number",
+              "format": "double"
+            },
+            "nullable": true
+          },
+          "spherAccel": {
+            "type": "array",
+            "items": {
+              "type": "number",
+              "format": "double"
+            },
+            "nullable": true
+          },
+          "spherAccelAccuracy": {
+            "type": "array",
+            "items": {
+              "type": "number",
+              "format": "double"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Account": {
+        "type": "object",
+        "properties": {
+          "header": {
+            "pattern": "^MMM-ACC-V[0-9]{1,2}[.][0-9]{1,2}$",
+            "type": "string",
+            "nullable": true
+          },
+          "mInstanceID": {
+            "type": "string",
+            "nullable": true
+          },
+          "mEnvironmentID": {
+            "type": "string",
+            "nullable": true
+          },
+          "accountID": {
+            "type": "string",
+            "nullable": true
+          },
+          "humanID": {
+            "type": "string",
+            "nullable": true
+          },
+          "personalProfileID": {
+            "type": "string",
+            "nullable": true
+          },
+          "processData": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProcessData"
+            },
+            "nullable": true
+          },
+          "descrMetadata": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Annotation": {
+        "type": "object",
+        "properties": {
+          "header": {
+            "pattern": "^OSD-ANN-V[0-9]{1,2}[.][0-9]{1,2}$",
+            "type": "string",
+            "nullable": true
+          },
+          "mInstanceID": {
+            "type": "string",
+            "nullable": true
+          },
+          "annotationID": {
+            "type": "string",
+            "nullable": true
+          },
+          "annotationJSONText": {
+            "type": "string",
+            "nullable": true
+          },
+          "descrMetadata": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Asset": {
+        "type": "object",
+        "properties": {
+          "header": {
+            "pattern": "^MMM-ASS-V[0-9]{1,2}[.][0-9]{1,2}$",
+            "type": "string",
+            "nullable": true
+          },
+          "mInstanceID": {
+            "type": "string",
+            "nullable": true
+          },
+          "assetID": {
+            "type": "string",
+            "nullable": true
+          },
+          "assetData": {
+            "$ref": "#/components/schemas/AssetData"
+          },
+          "descrMetadata": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AssetData": {
+        "type": "object",
+        "properties": {
+          "sourceItemID": {
+            "type": "string",
+            "nullable": true
+          },
+          "assetDate": {
+            "$ref": "#/components/schemas/Time"
+          },
+          "provenanceID": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "provenance": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Provenance"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AudioObject": {
+        "type": "object",
+        "properties": {
+          "header": {
+            "pattern": "^CAE-AUO-V[0-9]{1,2}[.][0-9]{1,2}$",
+            "type": "string",
+            "nullable": true
+          },
+          "mInstanceID": {
+            "type": "string",
+            "nullable": true
+          },
+          "audioObjectID": {
+            "type": "string",
+            "nullable": true
+          },
+          "audioDataQualifier": {
+            "nullable": true
+          },
+          "audioDataSpaceTime": {
+            "$ref": "#/components/schemas/SpaceTime"
+          },
+          "audioDataAnnotations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DataAnnotation"
+            },
+            "nullable": true
+          },
+          "descrMetadata": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Authentication": {
+        "type": "object",
+        "properties": {
+          "header": {
+            "pattern": "^MMM-AUT-V[0-9]{1,2}[.][0-9]{1,2}$",
+            "type": "string",
+            "nullable": true
+          },
+          "mInstanceID": {
+            "type": "string",
+            "nullable": true
+          },
+          "authenticationID": {
+            "type": "string",
+            "nullable": true
+          },
+          "serviceAccessData": {
+            "$ref": "#/components/schemas/ServiceAccessData"
+          },
+          "authenticationDataLength": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "authenticationDataURI": {
+            "type": "string",
+            "nullable": true
+          },
+          "descrMetadata": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AuthenticationRequest": {
+        "type": "object",
+        "properties": {
+          "itemID": {
+            "type": "string",
+            "nullable": true
+          },
+          "perceptibleEntity": {
+            "$ref": "#/components/schemas/PerceptibleEntity"
+          },
+          "claimedIdentityID": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "BasicDiscovery": {
+        "type": "object",
+        "properties": {
+          "header": {
+            "pattern": "^MMM-BDV-V[0-9]{1,2}[.][0-9]{1,2}$",
+            "type": "string",
+            "nullable": true
+          },
+          "mInstanceID": {
+            "type": "string",
+            "nullable": true
+          },
+          "basicDiscoveryID": {
+            "type": "string",
+            "nullable": true
+          },
+          "basicDiscoveryData": {
+            "$ref": "#/components/schemas/BasicDiscoveryData"
+          },
+          "descrMetadata": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "BasicDiscoveryData": {
+        "type": "object",
+        "properties": {
+          "discoveryRequest": {
+            "$ref": "#/components/schemas/DiscoveryRequest"
+          },
+          "discoveryResponse": {
+            "$ref": "#/components/schemas/DiscoveryResponse"
+          }
+        },
+        "additionalProperties": false
+      },
+      "BasicMLocation": {
+        "type": "object",
+        "properties": {
+          "header": {
+            "pattern": "^MMM-BML-V[0-9]{1,2}[.][0-9]{1,2}$",
+            "type": "string",
+            "nullable": true
+          },
+          "mInstanceID": {
+            "type": "string",
+            "nullable": true
+          },
+          "mEnvironmentID": {
+            "type": "string",
+            "nullable": true
+          },
+          "basicMLocationID": {
+            "type": "string",
+            "nullable": true
+          },
+          "basicMLocationSpaceTime": {
+            "$ref": "#/components/schemas/SpaceTime"
+          },
+          "basicMLocationRights": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "basicMLocations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BasicMLocation"
+            },
+            "nullable": true
+          },
+          "qualifier": {
+            "nullable": true
+          },
+          "descrMetadata": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "BasicObject": {
+        "type": "object",
+        "properties": {
+          "header": {
+            "pattern": "^OSD-BOB-V[0-9]{1,2}[.][0-9]{1,2}$",
+            "type": "string",
+            "nullable": true
+          },
+          "mInstanceID": {
+            "type": "string",
+            "nullable": true
+          },
+          "basicObjectID": {
+            "type": "string",
+            "nullable": true
+          },
+          "spaceTime": {
+            "$ref": "#/components/schemas/SpaceTime"
+          },
+          "qualifier": {
+            "nullable": true
+          },
+          "dataAnnotations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DataAnnotation"
+            },
+            "nullable": true
+          },
+          "rights": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "descrMetadata": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Complement": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "nullable": true
+          },
+          "valueType": {
+            "type": "string",
+            "nullable": true
+          },
+          "value": {
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CoordinateTypes": {
+        "enum": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "Currency": {
+        "type": "object",
+        "properties": {
+          "header": {
+            "pattern": "^MMM-CUR-V[0-9]{1,2}[.][0-9]{",
+            "type": "string",
+            "nullable": true
+          },
+          "mInstanceID": {
+            "type": "string",
+            "nullable": true
+          },
+          "currencyQualifier": {
+            "nullable": true
+          },
+          "descrMetadata": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "DataAnnotation": {
+        "type": "object",
+        "properties": {
+          "annotation": {
+            "$ref": "#/components/schemas/Annotation"
+          },
+          "annotationSpaceTime": {
+            "$ref": "#/components/schemas/SpaceTime"
+          },
+          "rights": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "DiscoveryRequest": {
+        "type": "object",
+        "properties": {
+          "requestText": {
+            "type": "string",
+            "nullable": true
+          },
+          "itemID": {
+            "type": "string",
+            "nullable": true
+          },
+          "perceptibleEntity": {
+            "$ref": "#/components/schemas/PerceptibleEntity"
+          },
+          "processID": {
+            "type": "string",
+            "nullable": true
+          },
+          "modelRights": {
+            "$ref": "#/components/schemas/Right"
+          }
+        },
+        "additionalProperties": false
+      },
+      "DiscoveryResponse": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ItemData"
+            },
+            "nullable": true
+          },
+          "processes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "outRights": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Right"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "General": {
+        "type": "object",
+        "properties": {
+          "coordTypeID": {
+            "$ref": "#/components/schemas/CoordinateTypes"
+          },
+          "objectType": {
+            "$ref": "#/components/schemas/ObjectTypes"
+          },
+          "mediaType": {
+            "$ref": "#/components/schemas/MediaTypes"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Item": {
+        "type": "object",
+        "properties": {
+          "itemID": {
+            "type": "string",
+            "nullable": true
+          },
+          "itemType": {
+            "type": "string",
+            "nullable": true
+          },
+          "itemContent": {
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ItemData": {
+        "type": "object",
+        "properties": {
+          "itemID": {
+            "type": "string",
+            "nullable": true
+          },
+          "perceptibleEntity": {
+            "$ref": "#/components/schemas/PerceptibleEntity"
+          },
+          "mLocationID": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "LevelTypes": {
+        "enum": [
+          0,
+          1,
+          2
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "MLocation": {
+        "type": "object",
+        "properties": {
+          "header": {
+            "pattern": "^MMM-MLC-V[0-9]{1,2}[.][0-9]{1,2}$",
+            "type": "string",
+            "nullable": true
+          },
+          "mInstanceID": {
+            "type": "string",
+            "nullable": true
+          },
+          "mEnvironmentID": {
+            "type": "string",
+            "nullable": true
+          },
+          "mLocationID": {
+            "type": "string",
+            "nullable": true
+          },
+          "mLocationTime": {
+            "$ref": "#/components/schemas/Time"
+          },
+          "mLocationRights": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "mLocations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MLocation"
+            },
+            "nullable": true
+          },
+          "basicMLocations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BasicMLocation"
+            },
+            "nullable": true
+          },
+          "descrMetadata": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "MObject": {
+        "type": "object",
+        "properties": {
+          "header": {
+            "pattern": "^PAF-OBJ-V[0-9]{1,2}[.][0-9]{1,2}$",
+            "type": "string",
+            "nullable": true
+          },
+          "mInstanceID": {
+            "type": "string",
+            "nullable": true
+          },
+          "objectID": {
+            "type": "string",
+            "nullable": true
+          },
+          "objectSpaceTime": {
+            "$ref": "#/components/schemas/SpaceTime"
+          },
+          "basicObjectCount": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "basicObjects": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BasicObject"
+            },
+            "nullable": true
+          },
+          "objectCount": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "objects": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MObject"
+            },
+            "nullable": true
+          },
+          "dataAnnotations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DataAnnotation"
+            },
+            "nullable": true
+          },
+          "rights": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "descrMetadata": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "MediaTypes": {
+        "enum": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "Message": {
+        "type": "object",
+        "properties": {
+          "header": {
+            "pattern": "^MMM-MSG-V[0-9]{1,2}[.][0-9]{1,2}$",
+            "type": "string",
+            "nullable": true
+          },
+          "mInstanceID": {
+            "type": "string",
+            "nullable": true
+          },
+          "messageID": {
+            "type": "string",
+            "nullable": true
+          },
+          "messageData": {
+            "$ref": "#/components/schemas/MessageData"
+          },
+          "descrMetadata": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "MessageData": {
+        "type": "object",
+        "properties": {
+          "messagePayload": {
+            "type": "string",
+            "nullable": true
+          },
+          "payloadData": {
+            "$ref": "#/components/schemas/PayloadData"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Model3DObject": {
+        "type": "object",
+        "properties": {
+          "header": {
+            "pattern": "^PAF-3MD-V[0-9]{1,2}[.][0-9]{1,2}$",
+            "type": "string",
+            "nullable": true
+          },
+          "mInstanceID": {
+            "type": "string",
+            "nullable": true
+          },
+          "model3DID": {
+            "type": "string",
+            "nullable": true
+          },
+          "model3DDataQualifier": {
+            "nullable": true
+          },
+          "model3DDataSpaceTime": {
+            "$ref": "#/components/schemas/SpaceTime"
+          },
+          "descrMetadata": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ObjectOrientation": {
+        "type": "object",
+        "properties": {
+          "header": {
+            "pattern": "^OSD-OOR-[0-9]{1,2}[.][0-9]{1,2}$",
+            "type": "string",
+            "nullable": true
+          },
+          "mInstanceID": {
+            "type": "string",
+            "nullable": true
+          },
+          "objectOrientatinID": {
+            "type": "string",
+            "nullable": true
+          },
+          "general": {
+            "$ref": "#/components/schemas/General"
+          },
+          "orientation": {
+            "$ref": "#/components/schemas/Orientation"
+          },
+          "velocityOfOrientation": {
+            "$ref": "#/components/schemas/VelocityOfOrientation"
+          },
+          "accelerationOfOrientation": {
+            "$ref": "#/components/schemas/AccelerationOfOrientation"
+          },
+          "descrMetadata": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ObjectPosition": {
+        "type": "object",
+        "properties": {
+          "header": {
+            "pattern": "^OSD-OPS-[0-9]{1,2}[.][0-9]{1,2}$",
+            "type": "string",
+            "nullable": true
+          },
+          "mInstanceID": {
+            "type": "string",
+            "nullable": true
+          },
+          "objectPositionID": {
+            "type": "string",
+            "nullable": true
+          },
+          "general": {
+            "$ref": "#/components/schemas/General"
+          },
+          "position": {
+            "$ref": "#/components/schemas/Position"
+          },
+          "velocityOfPosition": {
+            "$ref": "#/components/schemas/VelocityOfPosition"
+          },
+          "accelerationOfPosition": {
+            "$ref": "#/components/schemas/AccelerationOfPosition"
+          },
+          "descrMetadata": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ObjectTypes": {
+        "enum": [
+          0,
+          1
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "Orientation": {
+        "type": "object",
+        "properties": {
+          "orient": {
+            "type": "array",
+            "items": {
+              "type": "number",
+              "format": "double"
+            },
+            "nullable": true
+          },
+          "orientAccuracy": {
+            "type": "array",
+            "items": {
+              "type": "number",
+              "format": "double"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PayloadData": {
+        "type": "object",
+        "properties": {
+          "payloadLenght": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "payloadDataUri": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PerceptibleEntity": {
+        "type": "object",
+        "properties": {
+          "header": {
+            "pattern": "^OSD-PCE-V[0-9]{1,2}[.][0-9]{1,2}$",
+            "type": "string",
+            "nullable": true
+          },
+          "mInstanceID": {
+            "type": "string",
+            "nullable": true
+          },
+          "perceptibleEntityID": {
+            "type": "string",
+            "nullable": true
+          },
+          "perceptibleEntityData": {
+            "$ref": "#/components/schemas/PerceptibleEntityData"
+          },
+          "rightsID": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "descrMetadata": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PerceptibleEntityData": {
+        "type": "object",
+        "properties": {
+          "textObject": {
+            "$ref": "#/components/schemas/TextObject"
+          },
+          "speechObject": {
+            "$ref": "#/components/schemas/SpeechObject"
+          },
+          "audioObject": {
+            "$ref": "#/components/schemas/AudioObject"
+          },
+          "visualObject": {
+            "$ref": "#/components/schemas/VisualObject"
+          },
+          "_3DModelObject": {
+            "$ref": "#/components/schemas/Model3DObject"
+          },
+          "speechSceneDescriptors": {
+            "nullable": true
+          },
+          "audioSceneDescriptors": {
+            "nullable": true
+          },
+          "visualSceneDescriptors": {
+            "nullable": true
+          },
+          "audioVisualSceneDescriptors": {
+            "nullable": true
+          },
+          "audioVisualEventDescriptors": {
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PersonalProfile": {
+        "type": "object",
+        "properties": {
+          "header": {
+            "pattern": "^MMM-PPR-V[0-9]{1,2}[.][0-9]{1,2}$",
+            "type": "string",
+            "nullable": true
+          },
+          "mInstanceID": {
+            "type": "string",
+            "nullable": true
+          },
+          "humanID": {
+            "type": "string",
+            "nullable": true
+          },
+          "personalProfileID": {
+            "type": "string",
+            "nullable": true
+          },
+          "personalProfileData": {
+            "$ref": "#/components/schemas/PersonalProfileData"
+          },
+          "descrMetadata": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PersonalProfileData": {
+        "type": "object",
+        "properties": {
+          "firstName": {
+            "type": "string",
+            "nullable": true
+          },
+          "lastName": {
+            "type": "string",
+            "nullable": true
+          },
+          "age": {
+            "type": "number",
+            "format": "double"
+          },
+          "nationality": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Position": {
+        "type": "object",
+        "properties": {
+          "cartPosition": {
+            "type": "array",
+            "items": {
+              "type": "number",
+              "format": "double"
+            },
+            "nullable": true
+          },
+          "cartPositionAccuracy": {
+            "type": "array",
+            "items": {
+              "type": "number",
+              "format": "double"
+            },
+            "nullable": true
+          },
+          "spherPosition": {
+            "type": "array",
+            "items": {
+              "type": "number",
+              "format": "double"
+            },
+            "nullable": true
+          },
+          "spherPositionAccuracy": {
+            "type": "array",
+            "items": {
+              "type": "number",
+              "format": "double"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ProcessAction": {
+        "type": "object",
+        "properties": {
+          "processActionID": {
+            "type": "string",
+            "nullable": true
+          },
+          "time": {
+            "type": "string",
+            "nullable": true
+          },
+          "action": {
+            "type": "string",
+            "nullable": true
+          },
+          "sProcess": {
+            "type": "string",
+            "nullable": true
+          },
+          "sComplements": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Complement"
+            },
+            "nullable": true
+          },
+          "dProcess": {
+            "type": "string",
+            "nullable": true
+          },
+          "dComplements": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Complement"
+            },
+            "nullable": true
+          },
+          "errorMessage": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ProcessData": {
+        "type": "object",
+        "properties": {
+          "processID": {
+            "type": "string",
+            "nullable": true
+          },
+          "rightsID": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "personaID": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Provenance": {
+        "type": "object",
+        "properties": {
+          "header": {
+            "pattern": "^MMM-PRV-V[0-9]{1,2}[.][0-9]{1,2}$",
+            "type": "string",
+            "nullable": true
+          },
+          "mInstanceID": {
+            "type": "string",
+            "nullable": true
+          },
+          "provenanceID": {
+            "type": "string",
+            "nullable": true
+          },
+          "assetID": {
+            "type": "string",
+            "nullable": true
+          },
+          "provenanceData": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "descrMetadata": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ReceiverData": {
+        "type": "object",
+        "properties": {
+          "receiverID": {
+            "type": "string",
+            "nullable": true
+          },
+          "rToSPValue": {
+            "type": "string",
+            "nullable": true
+          },
+          "receiverRightsID": {
+            "type": "string",
+            "nullable": true
+          },
+          "receiverWalletID": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Right": {
+        "type": "object",
+        "properties": {
+          "header": {
+            "type": "string",
+            "nullable": true
+          },
+          "mInstanceID": {
+            "type": "string",
+            "nullable": true
+          },
+          "mEnvironmentID": {
+            "type": "string",
+            "nullable": true
+          },
+          "rightID": {
+            "type": "string",
+            "nullable": true
+          },
+          "rightsData": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RightData"
+            },
+            "nullable": true
+          },
+          "descrMetadata": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "RightData": {
+        "type": "object",
+        "properties": {
+          "level": {
+            "$ref": "#/components/schemas/LevelTypes"
+          },
+          "processActionID": {
+            "type": "string",
+            "nullable": true
+          },
+          "processAction": {
+            "$ref": "#/components/schemas/ProcessAction"
+          }
+        },
+        "additionalProperties": false
+      },
+      "SenderData": {
+        "type": "object",
+        "properties": {
+          "senderID": {
+            "type": "string",
+            "nullable": true
+          },
+          "sToSPValue": {
+            "type": "string",
+            "nullable": true
+          },
+          "senderRightsID": {
+            "$ref": "#/components/schemas/Value"
+          },
+          "senderWalletID": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ServiceAccessData": {
+        "type": "object",
+        "properties": {
+          "authenticationRequest": {
+            "$ref": "#/components/schemas/AuthenticationRequest"
+          },
+          "authenticationResponse": {
+            "type": "boolean",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ServiceProviderData": {
+        "type": "object",
+        "properties": {
+          "serviceProviderID": {
+            "type": "string",
+            "nullable": true
+          },
+          "serviceProviderWalletID": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SpaceTime": {
+        "type": "object",
+        "properties": {
+          "header": {
+            "pattern": "^OSD-SPT-V[0-9]{1,2}[.][0-9]{1.2}$",
+            "type": "string",
+            "nullable": true
+          },
+          "spaceTimeID": {
+            "type": "string",
+            "nullable": true
+          },
+          "spatialAttitude1": {
+            "$ref": "#/components/schemas/SpatialAttitude"
+          },
+          "spatialAttitude2": {
+            "$ref": "#/components/schemas/SpatialAttitude"
+          },
+          "time": {
+            "$ref": "#/components/schemas/Time"
+          },
+          "descrMetadata": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SpatialAttitude": {
+        "type": "object",
+        "properties": {
+          "header": {
+            "pattern": "^OSD-SPT-V[0-9]{1,2}[.][0-9]{1.2}$",
+            "type": "string",
+            "nullable": true
+          },
+          "mInstanceID": {
+            "type": "string",
+            "nullable": true
+          },
+          "objectSpatialAttitudeID": {
+            "type": "string",
+            "nullable": true
+          },
+          "general": {
+            "$ref": "#/components/schemas/General"
+          },
+          "position": {
+            "$ref": "#/components/schemas/ObjectPosition"
+          },
+          "orientation": {
+            "$ref": "#/components/schemas/ObjectOrientation"
+          },
+          "descrMetadata": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SpeechObject": {
+        "type": "object",
+        "properties": {
+          "header": {
+            "pattern": "^MMC-SPO-V[0-9]{1,2}[.][0-9]{1,2}$",
+            "type": "string",
+            "nullable": true
+          },
+          "mInstanceID": {
+            "type": "string",
+            "nullable": true
+          },
+          "speechObjectID": {
+            "type": "string",
+            "nullable": true
+          },
+          "speechDataQualifier": {
+            "nullable": true
+          },
+          "speechDataSpaceTime": {
+            "$ref": "#/components/schemas/SpaceTime"
+          },
+          "speechDataAnnotation": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DataAnnotation"
+            },
+            "nullable": true
+          },
+          "descrMetadata": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "TextObject": {
+        "type": "object",
+        "properties": {
+          "header": {
+            "pattern": "^MMC-TXO-V[0-9]{1,2}[.][0-9]{1,2}$",
+            "type": "string",
+            "nullable": true
+          },
+          "mInstanceID": {
+            "type": "string",
+            "nullable": true
+          },
+          "textObjectID": {
+            "type": "string",
+            "nullable": true
+          },
+          "textObjectQualifier": {
+            "nullable": true
+          },
+          "textObjectSpaceTime": {
+            "$ref": "#/components/schemas/SpaceTime"
+          },
+          "descrMetadata": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Time": {
+        "type": "object",
+        "properties": {
+          "header": {
+            "pattern": "^OSD-TIM-[0-9]{1,2}[.][0-9]{1,2}$",
+            "type": "string",
+            "nullable": true
+          },
+          "mInstanceID": {
+            "type": "string",
+            "nullable": true
+          },
+          "timeData": {
+            "$ref": "#/components/schemas/TimeData"
+          },
+          "descrMetadata": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "TimeData": {
+        "type": "object",
+        "properties": {
+          "timeType": {
+            "type": "boolean"
+          },
+          "timeUnit": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "startTime": {
+            "type": "number",
+            "format": "double"
+          },
+          "endTime": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Transaction": {
+        "type": "object",
+        "properties": {
+          "header": {
+            "pattern": "MMM-TRA-V[0-9]{1,2}[.][0-9]{1,2}$",
+            "type": "string",
+            "nullable": true
+          },
+          "mInstanceID": {
+            "type": "string",
+            "nullable": true
+          },
+          "transactionID": {
+            "type": "string",
+            "nullable": true
+          },
+          "transactionData": {
+            "$ref": "#/components/schemas/TransactionData"
+          },
+          "descrMetadata": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "TransactionData": {
+        "type": "object",
+        "properties": {
+          "assetID": {
+            "type": "string",
+            "nullable": true
+          },
+          "transactionTime": {
+            "$ref": "#/components/schemas/Time"
+          },
+          "senderData": {
+            "$ref": "#/components/schemas/SenderData"
+          },
+          "receiverData": {
+            "$ref": "#/components/schemas/ReceiverData"
+          },
+          "serviceProviderData": {
+            "$ref": "#/components/schemas/ServiceProviderData"
+          }
+        },
+        "additionalProperties": false
+      },
+      "User": {
+        "type": "object",
+        "properties": {
+          "userID": {
+            "type": "string",
+            "nullable": true
+          },
+          "humanID": {
+            "type": "string",
+            "nullable": true
+          },
+          "comIp": {
+            "type": "string",
+            "nullable": true
+          },
+          "comPort": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Value": {
+        "type": "object",
+        "properties": {
+          "header": {
+            "pattern": "^MMM-VAL-V[0-9]{1,2}[.][0-9]{1,2}$",
+            "type": "string",
+            "nullable": true
+          },
+          "mInstanceID": {
+            "type": "string",
+            "nullable": true
+          },
+          "valueID": {
+            "type": "string",
+            "nullable": true
+          },
+          "valueData": {
+            "$ref": "#/components/schemas/ValueData"
+          },
+          "descrMetadata": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ValueData": {
+        "type": "object",
+        "properties": {
+          "amount": {
+            "type": "string",
+            "nullable": true
+          },
+          "currency": {
+            "$ref": "#/components/schemas/Currency"
+          }
+        },
+        "additionalProperties": false
+      },
+      "VelocityOfOrientation": {
+        "type": "object",
+        "properties": {
+          "orientVelocity": {
+            "type": "array",
+            "items": {
+              "type": "number",
+              "format": "double"
+            },
+            "nullable": true
+          },
+          "orientVelocityAccuracy": {
+            "type": "array",
+            "items": {
+              "type": "number",
+              "format": "double"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "VelocityOfPosition": {
+        "type": "object",
+        "properties": {
+          "cartVelocity": {
+            "type": "array",
+            "items": {
+              "type": "number",
+              "format": "double"
+            },
+            "nullable": true
+          },
+          "cartVelocityAccuracy": {
+            "type": "array",
+            "items": {
+              "type": "number",
+              "format": "double"
+            },
+            "nullable": true
+          },
+          "spherVelocity": {
+            "type": "array",
+            "items": {
+              "type": "number",
+              "format": "double"
+            },
+            "nullable": true
+          },
+          "spherVelocityAccuracy": {
+            "type": "array",
+            "items": {
+              "type": "number",
+              "format": "double"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "VisualObject": {
+        "type": "object",
+        "properties": {
+          "header": {
+            "pattern": "^OSD-VIO-V[0-9]{1,2}[.][0-9]{1,2}$",
+            "type": "string",
+            "nullable": true
+          },
+          "mInstanceID": {
+            "type": "string",
+            "nullable": true
+          },
+          "visualObjectID": {
+            "type": "string",
+            "nullable": true
+          },
+          "visualDataQualifier": {
+            "nullable": true
+          },
+          "visualDataSpaceTime": {
+            "$ref": "#/components/schemas/SpaceTime"
+          },
+          "visualDataAnnotation": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DataAnnotation"
+            },
+            "nullable": true
+          },
+          "descrMetadata": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Wallet": {
+        "type": "object",
+        "properties": {
+          "header": {
+            "pattern": "^MMM-WAL-V[0-9]{1,2}[.][0-9]{1,2}$",
+            "type": "string",
+            "nullable": true
+          },
+          "mInstanceID": {
+            "type": "string",
+            "nullable": true
+          },
+          "walletID": {
+            "type": "string",
+            "nullable": true
+          },
+          "walletData": {
+            "$ref": "#/components/schemas/WalletData"
+          },
+          "descrMetadata": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "WalletData": {
+        "type": "object",
+        "properties": {
+          "valueIDs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "transactionIDs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}

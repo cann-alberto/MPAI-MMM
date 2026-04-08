@@ -1,11 +1,1 @@
-{
-  "Version": 1,
-  "Hash": "Lgsx5Mykt05gAa/IGQEivYcaxamQj9Llj6XQ8JLO7c0=",
-  "Source": "MMM-Server",
-  "BasePath": "_content/MMM-Server",
-  "Mode": "Default",
-  "ManifestType": "Publish",
-  "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": []
-}
+{"Version":1,"Hash":"lzK81Dh3F48EpYN8tnhwRs4C/WNWXIbhhd8c91AhC2A=","Source":"MMM-Server","BasePath":"/","Mode":"Root","ManifestType":"Publish","ReferencedProjectsConfiguration":[],"DiscoveryPatterns":[],"Assets":[],"Endpoints":[]}
