@@ -1,69 +1,87 @@
-﻿using MongoDB.Bson.Serialization.Attributes;
-using MongoDB.Bson.Serialization;
-using MongoDB.Bson;
-using MongoDB.Bson.Serialization.Serializers;
-using System.Text.Json;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Security.AccessControl;
+using System.Text.Json.Serialization;
 
-namespace MMM_Server.Models;
-
-/// <summary>
-/// The Item class represents a key-value pair, with support for various data types for Value.
-/// </summary>
-public class Item
+namespace MMM_Server.Models
 {
-    [BsonId]
-    [BsonRepresentation(BsonType.ObjectId)]
-    public string? ItemID { get; set; } // Identifier of the Basic Object.
-    public string ItemType { get; set; }
-
-    [BsonSerializer(typeof(GenericBsonSerializer))]  
-    public object ItemContent { get; set; }  
-}
-
-public class GenericBsonSerializer : IBsonSerializer<object>
-{
-    public Type ValueType => typeof(object);
-
-    public object Deserialize(BsonDeserializationContext context, BsonDeserializationArgs args)
+    /// <summary>   
+    /// Conditional rule (allOf / if-then from schema):
+    ///   If ProcessType == "User" → HumanID may be present.
+    ///   This is an additive rule (no required fields added), so it is
+    ///   documented here and can be enforced in the service layer if needed.
+    /// </summary>
+    public class Item : IValidatableObject
     {
-        var bsonValue = BsonValueSerializer.Instance.Deserialize(context, args);
+        [RegularExpression(@"^MMM-ITM-V[0-9]{1,2}[.][0-9]{1,2}$")]
+        public string? Header { get; set; }
 
-        return bsonValue switch
-        {
-            BsonNull => null!,
-            BsonString bsonString => bsonString.AsString,
-            BsonInt32 bsonInt => bsonInt.AsInt32,
-            BsonInt64 bsonLong => bsonLong.AsInt64,
-            BsonDouble bsonDouble => bsonDouble.AsDouble,
-            BsonBoolean bsonBool => bsonBool.AsBoolean,
-            BsonDocument bsonDoc => BsonSerializer.Deserialize<object>(bsonDoc),
-            _ => bsonValue
-        };
-    }
+        [Required]
+        public string ItemID { get; set; } = null!;
 
-    public void Serialize(BsonSerializationContext context, BsonSerializationArgs args, object value)
-    {
-        if (value is JsonElement jsonElement)
+        public string? SourceItemID { get; set; }
+
+        public string? ItemData { get; set; }
+
+        public AnyQualifier? ItemQualifier { get; set; }
+
+        public ItemCapabilities? ICapabilities { get; set; }
+
+        [JsonConverter(typeof(JsonStringEnumConverter))]
+        public ItemStatus? ItemStatus { get; set; }
+
+        public string? ProcessType { get; set; }
+
+        public string? HumanID { get; set; }
+
+        [MinLength(1)]
+        public List<RightsEntry>? Rights { get; set; }
+
+        public DataExchangeMetadata? DataExchangeMetadata { get; set; }
+
+        public Trace? Trace { get; set; }
+
+        [MaxLength(2048)]
+        public string? DescrMetadata { get; set; }
+
+
+        // ---------------------------------------------------------------------------
+        // IValidatableObject — enforces the allOf / if-then rule from the schema
+        // ---------------------------------------------------------------------------
+
+        /// <summary>
+        /// Validates that HumanID is only populated when ProcessType is "User".
+        /// </summary>
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
-            // Convertiamo JsonElement in un oggetto C# per la serializzazione
-            value = JsonElementToObject(jsonElement);
+            if (HumanID is not null && ProcessType != "User")
+                yield return new ValidationResult(
+                    "HumanID may only be set when ProcessType is \"User\".",
+                    new[] { nameof(HumanID) });
         }
-
-        BsonValue bsonValue = BsonValue.Create(value);
-        BsonValueSerializer.Instance.Serialize(context, args, bsonValue);
     }
 
-    private object JsonElementToObject(JsonElement element)
+
+    // ---------------------------------------------------------------------------
+    // ItemStatus enum
+    // ---------------------------------------------------------------------------
+
+    public enum ItemStatus
     {
-        return element.ValueKind switch
-        {
-            JsonValueKind.String => element.GetString()!,
-            JsonValueKind.Number => element.TryGetInt64(out long l) ? l : element.GetDouble(),
-            JsonValueKind.True => true,
-            JsonValueKind.False => false,
-            JsonValueKind.Object => BsonDocument.Parse(element.GetRawText()),
-            JsonValueKind.Array => element.EnumerateArray().Select(JsonElementToObject).ToArray(),
-            _ => null!
-        };
+        [JsonPropertyName("Model")] Model,
+        [JsonPropertyName("Final")] Final
+    }
+
+
+    // ---------------------------------------------------------------------------
+    // ItemCapabilities — oneOf: Capabilities object | string ID
+    // ---------------------------------------------------------------------------
+
+    public class ItemCapabilities
+    {
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public Capabilities? Capabilities { get; set; }
+
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public string? CapabilitiesID { get; set; }
     }
 }

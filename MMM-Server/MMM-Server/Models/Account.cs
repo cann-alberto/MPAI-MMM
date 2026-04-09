@@ -1,37 +1,66 @@
-﻿using MongoDB.Bson.Serialization.Attributes;
+﻿// V 2.1
 using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 using System.ComponentModel.DataAnnotations;
+using System.Diagnostics;
+using System.Text.Json.Serialization;
 
 namespace MMM_Server.Models;
 
 public class Account
 {
-    [RegularExpression(@"^MMM-ACC-V[0-9]{1,2}[.][0-9]{1,2}$", ErrorMessage = "Header must match the pattern: MMM-ACC-V<digit(s)>.<digit(s)>")]
-    public string Header { get; set; } = null!; // Account Header
     
-    public string? MInstanceID { get; set; } = null!; // Identifier of M-Instance
-    
-    public string? MEnvironmentID { get; set; } = null!; // Identifier of M-Environment
+    [Required]
+    [RegularExpression(@"^MMM-ACC-V[0-9]{1,2}[.][0-9]{1,2}$")]
+    public string Header { get; set; } = null!;
 
+    [Required]
+    public string MInstanceID { get; set; } = null!;
+
+    [Required]
+    public string MEnvironmentID { get; set; } = null!;
+    
     [BsonId]
-    [BsonRepresentation(BsonType.ObjectId)]    
-    public string? AccountID { get; set; } // Identifier of Account.
+    [Required]
+    [BsonRepresentation(BsonType.ObjectId)]
+    public string AccountID { get; set; } = null!;
 
-    public string? HumanID { get; set; } = null!; // Identifier of human.
+    public string? HumanID { get; set; }
+
+    public string? AccountLevel { get; set; }
+
+    public string? PersonalProfileID { get; set; }
+
+    public List<AccountItem>? Items { get; set; }
+
+    public List<AccountProcess>? Processes { get; set; }
+
+    [MinLength(1)]
+    public List<RightsEntry>? Rights { get; set; }
     
-    public string? PersonalProfileID { get; set; } = null!; // ID of Personal Profile.
+    public DataExchangeMetadata? DataExchangeMetadata { get; set; }
+        
+    public Trace? Trace { get; set; }
 
-    public List<ProcessData> ProcessData { get; set; } = null; // Set of Process
-
-    public string? DescrMetadata { get; set; } = null!; // Descriptive Metadata
-
+    [MaxLength(2048)]
+    public string? DescrMetadata { get; set; }
 }
 
-public class ProcessData 
-{    
-    public string? ProcessID { get; set; } = null; // ID of a Process
+public class AccountItem
+{
+    public string? ItemID { get; set; }
+}
 
-    public List<string>? RightsID { get; set; } = null; // ID of Rights held by ProcessID.
-    
-    public List<string>? PersonaID { get; set; } = null!; // Identifier of Persona
+public class AccountProcess
+{
+    public string? ProcessID { get; set; }
+}
+
+public class RightsEntry
+{
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public Right? Right { get; set; }
+
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public string? RightID { get; set; }
 }

@@ -6,23 +6,10 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.Configure<MMMDatabaseSettings>(builder.Configuration.GetSection("MMMDatabase"));
-builder.Services.AddSingleton<PersonalProfileService>();
-builder.Services.AddSingleton<UserService>();
 builder.Services.AddSingleton<AccountService>();
-builder.Services.AddSingleton<ProcessActionService>();
-builder.Services.AddSingleton<TransactService>();
-builder.Services.AddSingleton<WalletService>();
-builder.Services.AddSingleton<MessageService>();
-builder.Services.AddSingleton<RightService>();
-builder.Services.AddSingleton<ItemService>();
-builder.Services.AddSingleton<BasicObjectService>();
-builder.Services.AddSingleton<ObjectService>();
-builder.Services.AddSingleton<BasicMLocationService>();
-builder.Services.AddSingleton<MLocationService>();
-builder.Services.AddSingleton<AuthenticationService>();
-builder.Services.AddSingleton<AssetService>();
-builder.Services.AddSingleton<DiscoveryService>();
 
+
+// Add the controllers
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -32,19 +19,29 @@ builder.Services.AddSwaggerGen(options =>
     options.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
     {
         Title = "MMM Services Web Server",
-        Version = "v2.0",
+        Version = "v3.0",
         Description = "API documentation for MMM Services Web Server" 
     });
 });
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+//// Configure the HTTP request pipeline.
+//if (app.Environment.IsDevelopment())
+//{
+//    app.UseSwagger();
+//    app.UseSwaggerUI();
+//}
+
+app.UseSwagger();
+app.UseSwaggerUI(options =>
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+    options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
+    // This makes Swagger appear at the root URL (https://mmm-server...azurewebsites.net/)
+    options.RoutePrefix = string.Empty;
+});
+
+
 
 app.UseHttpsRedirection();
 
@@ -52,6 +49,6 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.MapGet("/", () => Results.Json(new { status = "ok", version = "v2.0", message = "MMM Services Web Server is running" }));
+//app.MapGet("/", () => Results.Json(new { status = "ok", version = "v3.0", message = "MMM Services Web Server is running" }));
 
 app.Run();

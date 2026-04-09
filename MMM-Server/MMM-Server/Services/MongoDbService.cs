@@ -1,4 +1,4 @@
-﻿using MMM_Server.Models;
+﻿﻿using MMM_Server.Models;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 
@@ -22,5 +22,5 @@ public class MongoDbService<T>
 
     public async Task CreateAsync(T newItem) =>
         await _collection.InsertOneAsync(newItem);
-    
+
 }
