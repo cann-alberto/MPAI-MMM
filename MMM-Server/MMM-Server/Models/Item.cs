@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+using System.ComponentModel.DataAnnotations;
 using System.Security.AccessControl;
 using System.Text.Json.Serialization;
 
@@ -15,7 +17,9 @@ namespace MMM_Server.Models
         [RegularExpression(@"^MMM-ITM-V[0-9]{1,2}[.][0-9]{1,2}$")]
         public string? Header { get; set; }
 
+        [BsonId]
         [Required]
+        [BsonRepresentation(BsonType.ObjectId)]
         public string ItemID { get; set; } = null!;
 
         public string? SourceItemID { get; set; }

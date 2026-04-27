@@ -1,22 +1,6 @@
 [
   {
-    "ContainingType": "Program\u002B\u003C\u003Ec",
-    "Method": "\u003C\u003CMain\u003E$\u003Eb__0_1",
-    "RelativePath": "",
-    "HttpMethod": "GET",
-    "IsController": false,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": [
-      {
-        "Type": "System.Void",
-        "MediaTypes": [],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "MMM_Server.Controllers.MMMController",
+    "ContainingType": "MMMController",
     "Method": "Get",
     "RelativePath": "api/MMM/Accounts",
     "HttpMethod": "GET",
@@ -36,7 +20,7 @@
     ]
   },
   {
-    "ContainingType": "MMM_Server.Controllers.MMMController",
+    "ContainingType": "MMMController",
     "Method": "Post",
     "RelativePath": "api/MMM/Accounts",
     "HttpMethod": "POST",
@@ -52,7 +36,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "MMM_Server.Controllers.MMMController",
+    "ContainingType": "MMMController",
     "Method": "Get",
     "RelativePath": "api/MMM/Accounts/{id}",
     "HttpMethod": "GET",
@@ -78,7 +62,7 @@
     ]
   },
   {
-    "ContainingType": "MMM_Server.Controllers.MMMController",
+    "ContainingType": "MMMController",
     "Method": "Update",
     "RelativePath": "api/MMM/Accounts/{id}",
     "HttpMethod": "PUT",
@@ -99,9 +83,108 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "MMM_Server.Controllers.MMMController",
+    "ContainingType": "MMMController",
     "Method": "Delete",
     "RelativePath": "api/MMM/Accounts/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MMMController",
+    "Method": "GetItems",
+    "RelativePath": "api/MMM/Items",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[MMM_Server.Models.Item, MMM-Server, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MMMController",
+    "Method": "PostItem",
+    "RelativePath": "api/MMM/Items",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newItem",
+        "Type": "MMM_Server.Models.Item",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MMMController",
+    "Method": "GetItem",
+    "RelativePath": "api/MMM/Items/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "MMM_Server.Models.Item",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MMMController",
+    "Method": "UpdateItem",
+    "RelativePath": "api/MMM/Items/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "updatedItem",
+        "Type": "MMM_Server.Models.Item",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MMMController",
+    "Method": "DeleteItem",
+    "RelativePath": "api/MMM/Items/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,

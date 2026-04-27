@@ -2,7 +2,7 @@
   "openapi": "3.0.1",
   "info": {
     "title": "MMM Services Web Server",
-    "description": "API documentation for MMM Services Web Server",
+    "description": "API documentation",
     "version": "v3.0"
   },
   "paths": {
@@ -171,10 +171,163 @@
         }
       }
     },
-    "/": {
+    "/api/MMM/Items": {
       "get": {
         "tags": [
-          "MMM-Server"
+          "MMM"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Item"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Item"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Item"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "MMM"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Item"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Item"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Item"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/MMM/Items/{id}": {
+      "get": {
+        "tags": [
+          "MMM"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Item"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Item"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Item"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "MMM"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Item"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Item"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Item"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "MMM"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
         ],
         "responses": {
           "200": {
@@ -336,6 +489,300 @@
         },
         "additionalProperties": false
       },
+      "AnyItem": {
+        "required": [
+          "descrMetadata",
+          "itemName",
+          "itemValueOrRef",
+          "mEnvironmentID",
+          "mInstanceID",
+          "trace"
+        ],
+        "type": "object",
+        "properties": {
+          "itemName": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "itemValueOrRef": {
+            "maxItems": 1,
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AnyItemValueOrRef"
+            }
+          },
+          "mInstanceID": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "mEnvironmentID": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "dataExchangeMetadata": {
+            "$ref": "#/components/schemas/DataExchangeMetadata"
+          },
+          "trace": {
+            "$ref": "#/components/schemas/Trace"
+          },
+          "descrMetadata": {
+            "maxLength": 2048,
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "AnyItemValueOrRef": {
+        "type": "object",
+        "properties": {
+          "objectValue": {
+            "type": "object",
+            "additionalProperties": { },
+            "nullable": true
+          },
+          "uriRef": {
+            "type": "string",
+            "format": "uri",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AnyPAStatusEntry": {
+        "type": "object",
+        "properties": {
+          "ack": {
+            "type": "string",
+            "nullable": true
+          },
+          "error": {
+            "$ref": "#/components/schemas/PAErrorType"
+          }
+        },
+        "additionalProperties": false
+      },
+      "AnyProcessAction": {
+        "required": [
+          "header",
+          "mInstanceID",
+          "processAction",
+          "processActionID"
+        ],
+        "type": "object",
+        "properties": {
+          "header": {
+            "minLength": 1,
+            "pattern": "^MMM-PAC-V[0-9]{1,2}[.][0-9]{1,2}$",
+            "type": "string"
+          },
+          "mInstanceID": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "processActionID": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "processAction": {
+            "$ref": "#/components/schemas/AnyProcessActionDetail"
+          },
+          "dataExchangeMetadata": {
+            "$ref": "#/components/schemas/DataExchangeMetadata"
+          },
+          "trace": {
+            "$ref": "#/components/schemas/Trace"
+          },
+          "descrMetadata": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AnyProcessActionDetail": {
+        "required": [
+          "paStatus",
+          "rqComplements"
+        ],
+        "type": "object",
+        "properties": {
+          "time": {
+            "$ref": "#/components/schemas/Time"
+          },
+          "action": {
+            "$ref": "#/components/schemas/ProcessAction"
+          },
+          "rqComplements": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Preposition"
+            }
+          },
+          "rsComplements": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Preposition"
+            },
+            "nullable": true
+          },
+          "paStatus": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AnyPAStatusEntry"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "AnyQualifier": {
+        "type": "object",
+        "properties": {
+          "header": {
+            "pattern": "^OSD-AQF-V[0-9]{1,2}[.][0-9]{1,2}$",
+            "type": "string",
+            "nullable": true
+          },
+          "mInstanceID": {
+            "type": "string",
+            "nullable": true
+          },
+          "qualifiersID": {
+            "type": "string",
+            "nullable": true
+          },
+          "qualifiers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AnyQualifierEntry"
+            },
+            "nullable": true
+          },
+          "descrMetadata": {
+            "maxLength": 2048,
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AnyQualifierEntry": {
+        "type": "object",
+        "properties": {
+          "gnssQualifier": {
+            "$ref": "#/components/schemas/GNSSQualifier"
+          },
+          "liDARQualifier": {
+            "$ref": "#/components/schemas/LiDARQualifier"
+          },
+          "offlineMapQualifier": {
+            "$ref": "#/components/schemas/OfflineMapQualifier"
+          },
+          "radarQualifier": {
+            "$ref": "#/components/schemas/RADARQualifier"
+          },
+          "ultrasoundQualifier": {
+            "$ref": "#/components/schemas/UltrasoundQualifier"
+          },
+          "bodyDescriptorsQualifier": {
+            "$ref": "#/components/schemas/BodyDescriptorsQualifier"
+          },
+          "faceDescriptorsQualifier": {
+            "$ref": "#/components/schemas/FaceDescriptorsQualifier"
+          },
+          "gestureDescriptorsQualifier": {
+            "$ref": "#/components/schemas/GestureDescriptorsQualifier"
+          },
+          "moCapQualifier": {
+            "$ref": "#/components/schemas/MoCapQualifier"
+          },
+          "BehaviouralSignal": {
+            "$ref": "#/components/schemas/BehaviouralSignalQualifier"
+          },
+          "ehrQualifier": {
+            "$ref": "#/components/schemas/EHRQualifier"
+          },
+          "GenomicsOmics": {
+            "$ref": "#/components/schemas/GenomicsOmicsQualifier"
+          },
+          "medicalImageQualifier": {
+            "$ref": "#/components/schemas/MedicalImageQualifier"
+          },
+          "neurophysiologicalSignalQualifier": {
+            "$ref": "#/components/schemas/NeurophysiologicalSignalQualifier"
+          },
+          "physiologicalSignalQualifier": {
+            "$ref": "#/components/schemas/PhysiologicalSignalQualifier"
+          },
+          "mlModelQualifier": {
+            "$ref": "#/components/schemas/MLModelQualifier"
+          },
+          "3DModelQualifier": {
+            "$ref": "#/components/schemas/ThreeDModelQualifier"
+          },
+          "audioQualifier": {
+            "$ref": "#/components/schemas/AudioQualifier"
+          },
+          "Audio-VisualQualifier": {
+            "$ref": "#/components/schemas/AudioVisualQualifier"
+          },
+          "colourQualifier": {
+            "$ref": "#/components/schemas/ColourQualifier"
+          },
+          "speechQualifier": {
+            "$ref": "#/components/schemas/SpeechQualifier"
+          },
+          "textQualifier": {
+            "$ref": "#/components/schemas/TextQualifier"
+          },
+          "visualQualifier": {
+            "$ref": "#/components/schemas/VisualQualifier"
+          },
+          "certificateQualifier": {
+            "$ref": "#/components/schemas/CertificateQualifier"
+          },
+          "contractQualifier": {
+            "$ref": "#/components/schemas/ContractQualifier"
+          },
+          "currencyQualifier": {
+            "$ref": "#/components/schemas/CurrencyQualifier"
+          },
+          "discoveryQualifier": {
+            "$ref": "#/components/schemas/DiscoveryQualifier"
+          },
+          "interpretationQualifier": {
+            "$ref": "#/components/schemas/InterpretationQualifier"
+          },
+          "programQualifier": {
+            "$ref": "#/components/schemas/ProgramQualifier"
+          },
+          "locationQualifier": {
+            "$ref": "#/components/schemas/LocationQualifier"
+          },
+          "timeQualifier": {
+            "$ref": "#/components/schemas/TimeQualifier"
+          },
+          "controlQualifier": {
+            "$ref": "#/components/schemas/ControlQualifier"
+          },
+          "danceQualifier": {
+            "$ref": "#/components/schemas/DanceQualifier"
+          },
+          "MetaverseAPI": {
+            "$ref": "#/components/schemas/MetaverseQualifier"
+          }
+        },
+        "additionalProperties": false
+      },
+      "AudioQualifier": {
+        "type": "object",
+        "additionalProperties": false
+      },
+      "AudioVisualQualifier": {
+        "type": "object",
+        "additionalProperties": false
+      },
       "AuthorisedDataEntry": {
         "type": "object",
         "properties": {
@@ -351,10 +798,268 @@
         },
         "additionalProperties": false
       },
+      "BasicDiscovery": {
+        "type": "object",
+        "additionalProperties": false
+      },
+      "BehaviouralSignalQualifier": {
+        "type": "object",
+        "additionalProperties": false
+      },
+      "BodyDescriptorsQualifier": {
+        "type": "object",
+        "additionalProperties": false
+      },
+      "Capabilities": {
+        "required": [
+          "capabilitiesID",
+          "dataExchangeMetadata",
+          "descrMetadata",
+          "header",
+          "itemCapabilities",
+          "mEnvironmentID",
+          "mInstanceCapabilities",
+          "mInstanceID",
+          "processCapabilities",
+          "trace",
+          "walletID"
+        ],
+        "type": "object",
+        "properties": {
+          "header": {
+            "minLength": 1,
+            "pattern": "^MMM-CPB-V[0-9]{1,2}[.][0-9]{1,2}$",
+            "type": "string"
+          },
+          "mInstanceID": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "mEnvironmentID": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "capabilitiesID": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "walletID": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "itemCapabilities": {
+            "$ref": "#/components/schemas/CapabilitiesItem"
+          },
+          "mInstanceCapabilities": {
+            "$ref": "#/components/schemas/CapabilitiesMInstance"
+          },
+          "processCapabilities": {
+            "$ref": "#/components/schemas/CapabilitiesProcess"
+          },
+          "rights": {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RightsEntry"
+            },
+            "nullable": true
+          },
+          "dataExchangeMetadata": {
+            "$ref": "#/components/schemas/DataExchangeMetadata"
+          },
+          "trace": {
+            "$ref": "#/components/schemas/Trace"
+          },
+          "descrMetadata": {
+            "maxLength": 2048,
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CapabilitiesItem": {
+        "required": [
+          "itemMetadata",
+          "processActionsByType",
+          "processes"
+        ],
+        "type": "object",
+        "properties": {
+          "processes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "processActionsByType": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AnyProcessAction"
+            }
+          },
+          "itemMetadata": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "CapabilitiesMInstance": {
+        "required": [
+          "actions",
+          "coordinateType",
+          "iMetadata",
+          "items",
+          "pMetadata",
+          "profile",
+          "qualifiers"
+        ],
+        "type": "object",
+        "properties": {
+          "coordinateType": {
+            "$ref": "#/components/schemas/CoordinateTypes"
+          },
+          "profile": {
+            "$ref": "#/components/schemas/MInstanceProfile"
+          },
+          "actions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AnyItem"
+            }
+          },
+          "qualifiers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AnyQualifier"
+            }
+          },
+          "pMetadata": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "iMetadata": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "CapabilitiesProcess": {
+        "required": [
+          "actions",
+          "capabilityChange",
+          "humanID",
+          "itemMetadata",
+          "itemQualifiers",
+          "items",
+          "mInstances",
+          "processMetadata",
+          "supportedApps",
+          "transactionInfo"
+        ],
+        "type": "object",
+        "properties": {
+          "humanID": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "supportedApps": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "actions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "processMetadata": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AnyItem"
+            }
+          },
+          "itemMetadata": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "itemQualifiers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AnyQualifier"
+            }
+          },
+          "transactionInfo": {
+            "type": "object",
+            "additionalProperties": { }
+          },
+          "capabilityChange": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "mInstances": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "CertificateQualifier": {
+        "type": "object",
+        "additionalProperties": false
+      },
       "CertificationTypes": {
         "enum": [
           0,
           1
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "ColourQualifier": {
+        "type": "object",
+        "additionalProperties": false
+      },
+      "ContractQualifier": {
+        "type": "object",
+        "additionalProperties": false
+      },
+      "ControlQualifier": {
+        "type": "object",
+        "additionalProperties": false
+      },
+      "CoordinateTypes": {
+        "enum": [
+          0,
+          1,
+          2,
+          3
         ],
         "type": "integer",
         "format": "int32"
@@ -488,6 +1193,10 @@
         },
         "additionalProperties": false
       },
+      "DanceQualifier": {
+        "type": "object",
+        "additionalProperties": false
+      },
       "DataAuthorisation": {
         "required": [
           "aimOrProcess",
@@ -577,6 +1286,61 @@
         "type": "integer",
         "format": "int32"
       },
+      "DiscoveryFormats": {
+        "type": "object",
+        "additionalProperties": false
+      },
+      "DiscoveryQualifier": {
+        "required": [
+          "discoveryQualifierID",
+          "format",
+          "header",
+          "trace"
+        ],
+        "type": "object",
+        "properties": {
+          "header": {
+            "minLength": 1,
+            "pattern": "^TFA-DVQ-V[0-9]{1,2}[.][0-9]{1,2}$",
+            "type": "string"
+          },
+          "discoveryQualifierID": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "format": {
+            "$ref": "#/components/schemas/DiscoveryQualifierFormat"
+          },
+          "dataExchangeMetadata": {
+            "$ref": "#/components/schemas/DataExchangeMetadata"
+          },
+          "trace": {
+            "$ref": "#/components/schemas/Trace"
+          },
+          "descrMetadata": {
+            "maxLength": 2048,
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "DiscoveryQualifierFormat": {
+        "type": "object",
+        "properties": {
+          "mpaiContentFormat": {
+            "$ref": "#/components/schemas/BasicDiscovery"
+          },
+          "otherContentFormats": {
+            "$ref": "#/components/schemas/DiscoveryFormats"
+          }
+        },
+        "additionalProperties": false
+      },
+      "EHRQualifier": {
+        "type": "object",
+        "additionalProperties": false
+      },
       "EncryptionAlgorithm": {
         "enum": [
           0,
@@ -586,6 +1350,22 @@
         ],
         "type": "integer",
         "format": "int32"
+      },
+      "FaceDescriptorsQualifier": {
+        "type": "object",
+        "additionalProperties": false
+      },
+      "GNSSQualifier": {
+        "type": "object",
+        "additionalProperties": false
+      },
+      "GenomicsOmicsQualifier": {
+        "type": "object",
+        "additionalProperties": false
+      },
+      "GestureDescriptorsQualifier": {
+        "type": "object",
+        "additionalProperties": false
       },
       "HashAlgorithm": {
         "enum": [
@@ -637,6 +1417,10 @@
         },
         "additionalProperties": false
       },
+      "InterpretationQualifier": {
+        "type": "object",
+        "additionalProperties": false
+      },
       "IntervalFormType": {
         "enum": [
           0,
@@ -646,11 +1430,112 @@
         "type": "integer",
         "format": "int32"
       },
+      "Item": {
+        "required": [
+          "itemID"
+        ],
+        "type": "object",
+        "properties": {
+          "header": {
+            "pattern": "^MMM-ITM-V[0-9]{1,2}[.][0-9]{1,2}$",
+            "type": "string",
+            "nullable": true
+          },
+          "itemID": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "sourceItemID": {
+            "type": "string",
+            "nullable": true
+          },
+          "itemData": {
+            "type": "string",
+            "nullable": true
+          },
+          "itemQualifier": {
+            "$ref": "#/components/schemas/AnyQualifier"
+          },
+          "iCapabilities": {
+            "$ref": "#/components/schemas/ItemCapabilities"
+          },
+          "itemStatus": {
+            "$ref": "#/components/schemas/ItemStatus"
+          },
+          "processType": {
+            "type": "string",
+            "nullable": true
+          },
+          "humanID": {
+            "type": "string",
+            "nullable": true
+          },
+          "rights": {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RightsEntry"
+            },
+            "nullable": true
+          },
+          "dataExchangeMetadata": {
+            "$ref": "#/components/schemas/DataExchangeMetadata"
+          },
+          "trace": {
+            "$ref": "#/components/schemas/Trace"
+          },
+          "descrMetadata": {
+            "maxLength": 2048,
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ItemCapabilities": {
+        "type": "object",
+        "properties": {
+          "capabilities": {
+            "$ref": "#/components/schemas/Capabilities"
+          },
+          "capabilitiesID": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ItemStatus": {
+        "enum": [
+          0,
+          1
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
       "LevelType": {
         "enum": [
           0,
           1,
           2
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "LiDARQualifier": {
+        "type": "object",
+        "additionalProperties": false
+      },
+      "LocationQualifier": {
+        "type": "object",
+        "additionalProperties": false
+      },
+      "MInstanceProfile": {
+        "enum": [
+          0,
+          1,
+          2,
+          3
         ],
         "type": "integer",
         "format": "int32"
@@ -836,6 +1721,18 @@
         "type": "integer",
         "format": "int32"
       },
+      "MedicalImageQualifier": {
+        "type": "object",
+        "additionalProperties": false
+      },
+      "MetaverseQualifier": {
+        "type": "object",
+        "additionalProperties": false
+      },
+      "MoCapQualifier": {
+        "type": "object",
+        "additionalProperties": false
+      },
       "NNModelExchange": {
         "enum": [
           0,
@@ -887,6 +1784,14 @@
         "type": "integer",
         "format": "int32"
       },
+      "NeurophysiologicalSignalQualifier": {
+        "type": "object",
+        "additionalProperties": false
+      },
+      "OfflineMapQualifier": {
+        "type": "object",
+        "additionalProperties": false
+      },
       "PAErrorType": {
         "enum": [
           0,
@@ -929,6 +1834,10 @@
             "$ref": "#/components/schemas/PAErrorType"
           }
         },
+        "additionalProperties": false
+      },
+      "PhysiologicalSignalQualifier": {
+        "type": "object",
         "additionalProperties": false
       },
       "Preposition": {
@@ -1107,6 +2016,14 @@
             "nullable": true
           }
         },
+        "additionalProperties": false
+      },
+      "ProgramQualifier": {
+        "type": "object",
+        "additionalProperties": false
+      },
+      "RADARQualifier": {
+        "type": "object",
         "additionalProperties": false
       },
       "RealCurrencies": {
@@ -1667,6 +2584,103 @@
         },
         "additionalProperties": false
       },
+      "SpeechQualifier": {
+        "type": "object",
+        "additionalProperties": false
+      },
+      "TextQualifier": {
+        "type": "object",
+        "additionalProperties": false
+      },
+      "ThreeDModelContentFormats": {
+        "enum": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "ThreeDModelFormat": {
+        "type": "object",
+        "properties": {
+          "contentFormat": {
+            "$ref": "#/components/schemas/ThreeDModelContentFormats"
+          },
+          "transportFormat": {
+            "$ref": "#/components/schemas/ThreeDModelTransportFormats"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ThreeDModelQualifier": {
+        "required": [
+          "3DModelQualifierID",
+          "format",
+          "header",
+          "subType"
+        ],
+        "type": "object",
+        "properties": {
+          "header": {
+            "minLength": 1,
+            "pattern": "^TFA-3MQ-V[0-9]{1,2}[.][0-9]{1,2}$",
+            "type": "string"
+          },
+          "3DModelQualifierID": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "subType": {
+            "$ref": "#/components/schemas/ThreeDModelSubType"
+          },
+          "format": {
+            "$ref": "#/components/schemas/ThreeDModelFormat"
+          },
+          "attributes": {
+            "type": "object",
+            "additionalProperties": { },
+            "nullable": true
+          },
+          "dataExchangeMetadata": {
+            "$ref": "#/components/schemas/DataExchangeMetadata"
+          },
+          "trace": {
+            "$ref": "#/components/schemas/Trace"
+          },
+          "descrMetadata": {
+            "maxLength": 2048,
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ThreeDModelSubType": {
+        "enum": [
+          0,
+          1,
+          2
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "ThreeDModelTransportFormats": {
+        "enum": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
       "Time": {
         "required": [
           "data",
@@ -1963,6 +2977,10 @@
         "type": "integer",
         "format": "int32"
       },
+      "UltrasoundQualifier": {
+        "type": "object",
+        "additionalProperties": false
+      },
       "Value": {
         "type": "object",
         "properties": {
@@ -2014,6 +3032,51 @@
         "additionalProperties": false
       },
       "VirtualCurrencies": {
+        "enum": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "VisualQualifier": {
         "type": "object",
         "additionalProperties": false
       }

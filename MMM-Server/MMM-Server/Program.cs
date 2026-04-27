@@ -1,54 +1,58 @@
 using MMM_Server.Models;
 using MMM_Server.Services;
-using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// 1. Services
 builder.Services.Configure<MMMDatabaseSettings>(builder.Configuration.GetSection("MMMDatabase"));
 builder.Services.AddSingleton<AccountService>();
-
-
-// Add the controllers
+builder.Services.AddSingleton<ItemService>();
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-//builder.Services.AddSwaggerGen();
 builder.Services.AddSwaggerGen(options =>
 {
     options.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
     {
         Title = "MMM Services Web Server",
         Version = "v3.0",
-        Description = "API documentation for MMM Services Web Server" 
+        Description = "API documentation"
     });
 });
 
 var app = builder.Build();
 
-//// Configure the HTTP request pipeline.
-//if (app.Environment.IsDevelopment())
-//{
-//    app.UseSwagger();
-//    app.UseSwaggerUI();
-//}
-
+// 2. Middleware Order (CRITICAL)
+// We enable Swagger for EVERY environment to ensure it works on Azure
 app.UseSwagger();
-app.UseSwaggerUI(options =>
+app.UseSwaggerUI(c =>
 {
-    options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
-    // This makes Swagger appear at the root URL (https://mmm-server...azurewebsites.net/)
-    options.RoutePrefix = string.Empty;
+    // The path MUST match the name in SwaggerDoc above ("v1")
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "MMM API V1");
+
+    // This makes Swagger the default page at https://localhost:7099/
+    c.RoutePrefix = string.Empty;
+
+    // 1. Don't expand the model by default (massive speed boost)
+    c.DefaultModelExpandDepth(0);
+
+    // 2. Default to showing the 'Schema' instead of the generated 'Example Value'
+    // This stops the browser from trying to 'solve' your Regex on click
+    c.DefaultModelRendering(Swashbuckle.AspNetCore.SwaggerUI.ModelRendering.Model);
+
+    // 3. Keep everything collapsed until you click it
+    c.DocExpansion(Swashbuckle.AspNetCore.SwaggerUI.DocExpansion.None);
+
+
 });
 
-
-
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
 
+// 3. Routing
 app.MapControllers();
 
-//app.MapGet("/", () => Results.Json(new { status = "ok", version = "v3.0", message = "MMM Services Web Server is running" }));
+// IMPORTANT: Delete or comment out the MapGet("/") line! 
+// If this exists, it "steals" the root URL from Swagger.
+// app.MapGet("/", () => Results.Json(new { status = "ok" })); 
 
 app.Run();

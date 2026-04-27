@@ -49,19 +49,9 @@ namespace MMM_Server.Models
 
     public class ThreeDModelFormat
     {
-        /// <summary>
-        /// Content format of the 3D model.
-        /// ⚠️ EXTERNAL REFERENCE: 3DModelContentFormats
-        /// "$ref": "https://schemas.mpai.community/TFA/V1.5/formats/3DModelContentFormats.json"
-        /// </summary>
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public ThreeDModelContentFormats? ContentFormat { get; set; }
 
-        /// <summary>
-        /// Transport format of the 3D model.
-        /// ⚠️ EXTERNAL REFERENCE: 3DModelTransportFormats
-        /// "$ref": "https://schemas.mpai.community/TFA/V1.5/formats/3DModelTransportFormats.json"
-        /// </summary>
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public ThreeDModelTransportFormats? TransportFormat { get; set; }
     }
